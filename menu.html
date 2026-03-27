@@ -41,9 +41,9 @@
     .ms{padding:5rem 2.5rem 3.5rem;max-width:1280px;margin:0 auto;}
 
     .cat-head{display:flex;align-items:center;gap:1.4rem;margin-bottom:3.5rem;}
-    .cat-bar{flex:1;height:1px;background:rgba(245,237,216,.07);}
-    .cat-name{font-family:'Bebas Neue';font-size:clamp(3rem,8vw,7rem);color:rgba(245,237,216,.06);letter-spacing:.05em;white-space:nowrap;}
-    .cat-pill{font-family:'Oswald';font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro);border:1px solid rgba(212,147,10,.28);padding:.26rem .85rem;border-radius:20px;white-space:nowrap;}
+    .cat-bar{flex:1;height:1px;background:linear-gradient(90deg,rgba(245,237,216,0),rgba(245,237,216,.12),rgba(245,237,216,0));}
+    .cat-name{font-family:'Bebas Neue';font-size:clamp(3rem,8vw,7rem);color:rgba(245,237,216,.08);letter-spacing:.05em;white-space:nowrap;text-shadow:0 2px 8px rgba(212,147,10,.15);}
+    .cat-pill{font-family:'Oswald';font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro);border:1px solid rgba(212,147,10,.35);padding:.26rem .85rem;border-radius:20px;white-space:nowrap;background:rgba(212,147,10,.08);}
 
     /* ── GRID ── */
     .grid{display:grid;gap:2px;}
@@ -63,7 +63,7 @@
     .photo.r43{aspect-ratio:4/3;}
     .photo.r169{aspect-ratio:16/9;}
     .photo.r2110{aspect-ratio:21/8;}
-    .photo img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;transition:transform .6s ease,opacity .35s;}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;transition:transform .6s ease,opacity .35s;background:#0D0905 linear-gradient(45deg,#1a1208,#0D0905) no-repeat;}
     .card:hover .photo img{transform:scale(1.04);opacity:1;}
     .nophoto{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;background:linear-gradient(135deg,#0E0A07,#1a1208);}
     .nophoto i{font-size:2.2rem;opacity:.3;}
@@ -73,7 +73,7 @@
     .name{font-family:'Bebas Neue';font-size:clamp(1.4rem,2.8vw,2.2rem);letter-spacing:.04em;color:var(--crema);line-height:.95;margin-bottom:.7rem;}
     .name .star{color:var(--rojo);font-size:.75em;}
     .name .sub{font-family:'Oswald';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,237,216,.28);display:block;margin-top:.25rem;font-weight:300;}
-    .desc{font-family:'Lora';font-style:italic;font-size:clamp(.74rem,.88vw,.82rem);line-height:1.72;color:rgba(245,237,216,.4);}
+    .desc{font-family:'Lora';font-style:italic;font-size:clamp(.74rem,.88vw,.82rem);line-height:1.72;color:rgba(245,237,216,.55);text-shadow:0 1px 3px rgba(0,0,0,.8);}
     .tag{display:inline-block;margin-top:.8rem;font-family:'Oswald';font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rojo);border-top:1px solid rgba(196,30,58,.28);padding-top:.45rem;}
 
     /* ── BAND ── */
@@ -109,13 +109,26 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:900px){.g3{grid-template-columns:repeat(2,1fr)}.span2{grid-column:span 1}.span3{grid-column:span 1}}
-    @media(max-width:580px){
-      nav{padding:1rem 1.2rem;}
-      .ms{padding:3rem 1.1rem 2rem;}
+    @media(max-width:640px){
+      nav{padding:.85rem 1rem;}
+      nav-logo{font-size:.8rem;}
+      .hero{padding:6rem 1.2rem 3rem;}
+      .ms{padding:2.8rem 1rem 2rem;}
+      .cat-head{gap:1rem;margin-bottom:2.5rem;}
+      .info{padding:1.2rem 1.2rem 1.5rem;}
+      .name{font-size:clamp(1.2rem,2.2vw,1.8rem);margin-bottom:.55rem;}
+      .desc{font-size:clamp(.72rem,.85vw,.78rem);line-height:1.65;color:rgba(245,237,216,.58);}
+      .tag{font-size:.48rem;margin-top:.65rem;}
       .g3,.g2{grid-template-columns:1fr;}
       .span2,.span3{grid-column:span 1;}
       .photo.r2110{aspect-ratio:4/3;}
       .photo.r169{aspect-ratio:4/3;}
+      .cta{padding:3.5rem 1.2rem;}
+      .cta-t{font-size:clamp(2.2rem,5.5vw,4rem);}
+      .btn-row{gap:.75rem;}
+      .btn-rojo,.btn-wsp{padding:.7rem 1.8rem;font-size:.62rem;}
+      footer{padding:2.5rem 1.2rem 1.8rem;}
+      .ft-brand{font-size:clamp(2.2rem,8vw,5.5rem);}
     }
   </style>
 </head>
@@ -150,7 +163,7 @@
     <!-- Rabas para uno / para dos -->
     <div class="card rv d1">
       <div class="photo r43">
-        <img src="rabas.png" alt="Rabas" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="rabas.png" alt="Rabas" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Rabas<span class="sub">Para uno · Para dos</span></div>
@@ -162,7 +175,7 @@
     <!-- Rabas a la Provenzal -->
     <div class="card rv d2">
       <div class="photo r43">
-        <img src="rabas-provenzal.png" alt="Rabas a la Provenzal" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="rabas-provenzal.png" alt="Rabas a la Provenzal" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Rabas a la Provenzal<span class="sub">Para dos</span></div>
@@ -174,7 +187,7 @@
     <!-- Rabas con aros de cebolla -->
     <div class="card rv d3">
       <div class="photo r43">
-        <img src="rabas-cebolla.png" alt="Rabas con Aros de Cebolla" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="rabas-cebolla.png" alt="Rabas con Aros de Cebolla" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Rabas con Aros de Cebolla<span class="sub">Para dos</span></div>
@@ -186,7 +199,7 @@
     <!-- Calamaretes fritos -->
     <div class="card rv d4">
       <div class="photo r43">
-        <img src="calamaretes-fritos.png" alt="Calamaretes Fritos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="calamaretes-fritos.png" alt="Calamaretes Fritos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Calamaretes Fritos<span class="sub">Para dos</span></div>
@@ -198,7 +211,7 @@
     <!-- Mix de Mariscos -->
     <div class="card rv d5">
       <div class="photo r43">
-        <img src="mix-mariscos.png" alt="Mix de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="mix-mariscos.png" alt="Mix de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Mix de Mariscos<span class="sub">Para uno · Para dos</span></div>
@@ -207,10 +220,10 @@
       </div>
     </div>
 
-    <!-- Cornilitos -->
+    <!-- Cornalitos -->
     <div class="card rv d6">
       <div class="photo r43">
-        <img src="cornilitos.png" alt="Cornilitos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="cornilitos.png" alt="Cornalitos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Cornalitos<span class="sub">Para dos</span></div>
@@ -248,7 +261,7 @@
 
     <div class="card rv d1">
       <div class="photo r43">
-        <img src="ensalada-mixta.png" alt="Ensalada Mixta" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥗</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="ensalada-mixta.png" alt="Ensalada Mixta" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥗</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Ensalada Mixta</div>
@@ -259,7 +272,7 @@
 
     <div class="card rv d2">
       <div class="photo r43">
-        <img src="ensalada-rucula.png" alt="Rúcula y Parmesano" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥗</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="ensalada-rucula.png" alt="Rúcula y Parmesano" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥗</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Rúcula y Parmesano</div>
@@ -270,7 +283,7 @@
 
     <div class="card rv d3">
       <div class="photo r43">
-        <img src="ensalada-caesar.png" alt="Ensalada Caesar" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥬</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="ensalada-caesar.png" alt="Ensalada Caesar" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥬</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Ensalada Caesar</div>
@@ -281,7 +294,7 @@
 
     <div class="card rv d4">
       <div class="photo r43">
-        <img src="ensalada-mariscos.png" alt="Ensalada de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="ensalada-mariscos.png" alt="Ensalada de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Ensalada de Mariscos</div>
@@ -319,7 +332,7 @@
 
     <div class="card rv d1">
       <div class="photo r43">
-        <img src="mejillones-gratinados.png" alt="Mejillones Gratinados" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦪</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="mejillones-gratinados.png" alt="Mejillones Gratinados" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦪</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Mejillones Gratinados<span class="sub">½ Valva</span></div>
@@ -330,7 +343,7 @@
 
     <div class="card rv d2">
       <div class="photo r43">
-        <img src="omelette-camarones.png" alt="Omelette de Camarones" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🍳</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="omelette-camarones.png" alt="Omelette de Camarones" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🍳</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Omelette de Camarones</div>
@@ -341,7 +354,7 @@
 
     <div class="card rv d3">
       <div class="photo r43">
-        <img src="gambas-ajillo.png" alt="Gambas al Ajillo" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="gambas-ajillo.png" alt="Gambas al Ajillo" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Gambas al Ajillo<span class="sub">Con papas</span></div>
@@ -352,7 +365,7 @@
 
     <div class="card rv d4">
       <div class="photo r43">
-        <img src="gambas-4quesos.png" alt="Gambas 4 Quesos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="gambas-4quesos.png" alt="Gambas 4 Quesos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Gambas 4 Quesos Gratinadas<span class="sub">Con papas</span></div>
@@ -363,7 +376,7 @@
 
     <div class="card rv d5 span2">
       <div class="photo r169">
-        <img src="gambas-pescadora.png" alt="Gambas a la Pescadora" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="gambas-pescadora.png" alt="Gambas a la Pescadora" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Gambas a la Pescadora</div>
@@ -402,7 +415,7 @@
     <!-- Pulpo — full width, signature -->
     <div class="card sig rv d1 span3">
       <div class="photo r2110">
-        <img src="pulpo-gallego.png" alt="Pulpo a la Gallega" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐙</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="pulpo-gallego.png" alt="Pulpo a la Gallega" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐙</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Pulpo Español a la Gallega <span class="star">★</span></div>
@@ -414,7 +427,7 @@
     <!-- Paella de Mariscos -->
     <div class="card sig rv d2 span2">
       <div class="photo r169">
-        <img src="paella-mariscos.png" alt="Paella de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥘</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="paella-mariscos.png" alt="Paella de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥘</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Paella de Mariscos <span class="star">★ N°1</span><span class="sub">Para dos personas</span></div>
@@ -426,7 +439,7 @@
     <!-- Paella de Vegetales -->
     <div class="card rv d3">
       <div class="photo r43">
-        <img src="paella-vegetales.png" alt="Paella de Vegetales" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥘</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="paella-vegetales.png" alt="Paella de Vegetales" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥘</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Paella de Vegetales<span class="sub">Para uno</span></div>
@@ -438,7 +451,7 @@
     <!-- Cazuela de Mariscos -->
     <div class="card rv d4">
       <div class="photo r43">
-        <img src="cazuela-mariscos.png" alt="Cazuela de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🫕</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="cazuela-mariscos.png" alt="Cazuela de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🫕</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Cazuela de Mariscos<span class="sub">Para dos</span></div>
@@ -450,7 +463,7 @@
     <!-- Vieiras 1/2 valva -->
     <div class="card rv d5">
       <div class="photo r43">
-        <img src="vieiras-gratinadas.png" alt="Vieiras Gratinadas" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="vieiras-gratinadas.png" alt="Vieiras Gratinadas" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Vieiras Gratinadas<span class="sub">½ Valva</span></div>
@@ -462,7 +475,7 @@
     <!-- Cayos de Vieiras -->
     <div class="card rv d6">
       <div class="photo r43">
-        <img src="cayos-vieiras.png" alt="Cayos de Vieiras" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="cayos-vieiras.png" alt="Cayos de Vieiras" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Cayos de Vieiras Gratinados</div>
@@ -489,7 +502,7 @@
 
     <div class="card rv d1">
       <div class="photo r43">
-        <img src="picada-mariscos-1.png" alt="Picada de Mariscos para 1" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="picada-mariscos-1.png" alt="Picada de Mariscos para 1" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Picada de Mariscos<span class="sub">Para uno</span></div>
@@ -500,7 +513,7 @@
 
     <div class="card sig rv d2">
       <div class="photo r43">
-        <img src="picada-mariscos-2.png" alt="Picada de Mariscos para 2" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="picada-mariscos-2.png" alt="Picada de Mariscos para 2" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Picada de Mariscos<span class="sub">Para dos · Gran formato</span></div>
@@ -538,7 +551,7 @@
 
     <div class="card rv d1">
       <div class="photo r43">
-        <img src="salmon-verdeo.png" alt="Salmón al Verdeo" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="salmon-verdeo.png" alt="Salmón al Verdeo" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Salmón Rosado al Verdeo<span class="sub">Con papas</span></div>
@@ -549,7 +562,7 @@
 
     <div class="card sig rv d2 span2">
       <div class="photo r169">
-        <img src="salmon-pescadora.png" alt="Salmón a la Pescadora" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="salmon-pescadora.png" alt="Salmón a la Pescadora" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Salmón Rosado a la Pescadora <span class="star">★</span><span class="sub">Con papas</span></div>
@@ -560,7 +573,7 @@
 
     <div class="card rv d3">
       <div class="photo r43">
-        <img src="salmon-grille.png" alt="Salmón Grillé" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="salmon-grille.png" alt="Salmón Grillé" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Salmón Rosado Grillé<span class="sub">Con papas</span></div>
@@ -571,7 +584,7 @@
 
     <div class="card rv d4">
       <div class="photo r43">
-        <img src="merluza-rebozada.png" alt="Merluza Rebozada" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="merluza-rebozada.png" alt="Merluza Rebozada" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Merluza Rebozada<span class="sub">Con papas</span></div>
@@ -582,7 +595,7 @@
 
     <div class="card rv d5">
       <div class="photo r43">
-        <img src="abadejo-grille.png" alt="Abadejo Grillé" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="abadejo-grille.png" alt="Abadejo Grillé" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Abadejo Grillé<span class="sub">Con papas</span></div>
@@ -593,7 +606,7 @@
 
     <div class="card rv d6">
       <div class="photo r43">
-        <img src="abadejo-roquefort.png" alt="Abadejo al Roquefort" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="abadejo-roquefort.png" alt="Abadejo al Roquefort" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Abadejo al Roquefort<span class="sub">Con papas</span></div>
@@ -604,7 +617,7 @@
 
     <div class="card sig rv d1 span3">
       <div class="photo r2110">
-        <img src="mero-langostinos.png" alt="Mero en Salsa de Langostinos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐡</i><p>Próximamente</p></div>'">
+        <img loading="lazy" src="mero-langostinos.png" alt="Mero en Salsa de Langostinos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐡</i><p>Próximamente</p></div>'">
       </div>
       <div class="info">
         <div class="name">Mero en Salsa de Langostinos <span class="star">★</span><span class="sub">Con papas</span></div>

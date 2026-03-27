@@ -258,6 +258,10 @@
     .pepe-lbl{font-family:'Oswald';font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;white-space:nowrap;}
     #pepe-chat{position:fixed;bottom:5.8rem;right:1.8rem;width:330px;max-height:520px;background:#0E0B08;border:1px solid rgba(196,30,58,.3);border-radius:16px;display:flex;flex-direction:column;z-index:4999;box-shadow:0 8px 56px rgba(0,0,0,.75);transform:translateY(18px) scale(.95);opacity:0;pointer-events:none;transition:all .28s cubic-bezier(.34,1.56,.64,1);}
     #pepe-chat.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all;}
+    @media(max-width:640px){
+      #pepe-chat{position:fixed;inset:0;bottom:auto;right:auto;width:100%;max-height:100vh;border-radius:0;border:none;transform:translateY(100%);border-top:1px solid rgba(196,30,58,.3);}
+      #pepe-chat.open{transform:translateY(0);border-radius:0;}
+    }
     #pepe-head{background:var(--rojo);border-radius:16px 16px 0 0;padding:.85rem 1rem;display:flex;align-items:center;justify-content:space-between;}
     .ph-info{display:flex;align-items:center;gap:.65rem;}
     .ph-av{font-size:1.55rem;}
@@ -268,6 +272,11 @@
     .ph-close{background:none;border:none;color:rgba(255,255,255,.65);font-size:.95rem;cursor:pointer;padding:.2rem .4rem;border-radius:4px;transition:color .2s;}
     .ph-close:hover{color:#fff;}
     #pepe-msgs{flex:1;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.65rem;max-height:270px;scrollbar-width:thin;scrollbar-color:rgba(196,30,58,.3) transparent;}
+    @media(max-width:640px){
+      #pepe-head{border-radius:0;position:sticky;top:0;z-index:1;}
+      #pepe-msgs{max-height:calc(100vh - 180px);padding:1rem .9rem;}
+      #pepe-ir{position:sticky;bottom:0;background:#0E0B08;border-top:1px solid rgba(255,255,255,.1);padding:.7rem .9rem;}
+    }
     .pm{max-width:90%;padding:.6rem .85rem;border-radius:12px;font-family:'Lora';font-size:.8rem;line-height:1.55;}
     .pm.bot{background:rgba(212,147,10,.08);border:1px solid rgba(212,147,10,.14);color:rgba(245,237,216,.88);align-self:flex-start;border-radius:4px 12px 12px 12px;}
     .pm.usr{background:var(--rojo);color:#fff;align-self:flex-end;border-radius:12px 4px 12px 12px;}
@@ -283,11 +292,11 @@
     #pepe-inp::placeholder{color:rgba(245,237,216,.28);}
     #pepe-send{background:var(--rojo);border:none;border-radius:8px;color:#fff;padding:.48rem .8rem;cursor:pointer;font-size:.88rem;transition:background .2s;}
     #pepe-send:hover{background:#a31732;}
-    @media(max-width:480px){
-      #pepe-chat{width:calc(100vw - 2rem);right:1rem;bottom:4.2rem;}
-      #pepe-btn{right:1rem;bottom:.8rem;padding:.55rem .7rem;gap:.4rem;}
+    @media(max-width:640px){
+      #pepe-btn{right:1.2rem;bottom:1.2rem;padding:.5rem .6rem;gap:.35rem;box-shadow:0 2px 12px rgba(196,30,58,.45);}
+      #pepe-btn:hover{transform:scale(1.12);}
       .pepe-lbl{display:none;}
-      .pepe-icon{font-size:1.15rem;}
+      .pepe-icon{font-size:1.1rem;}
     }
 
     /* ── VIDEO MOBILE — completo, sin recorte ── */
@@ -313,8 +322,8 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:700px){
-      nav,nav.dark{padding:1.1rem 1.5rem;}
-      .nav-tel{display:none;}
+      nav,nav.dark{padding:1rem 1.2rem;}
+      .nav-tel:last-child{display:none;}
       .sec-overlay{padding:0 1.5rem 4rem;}
       .stats-grid{grid-template-columns:1fr;}
       .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
@@ -345,7 +354,7 @@
     <nav id="nav">
       <a href="#" class="nav-logo" style="font-size:clamp(.9rem,1.6vw,1.4rem);">TABERNA ESPAÑOLA<b>.</b></a>
       <div style="display:flex;align-items:center;gap:2rem;">
-        <a href="menu.html" class="nav-tel" style="color:rgba(245,237,216,.55);letter-spacing:.22em;">MENÚ</a>
+        <a href="menu.html" style="font-family:'Oswald';font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,237,216,.55);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--crema)'" onmouseout="this.style.color='rgba(245,237,216,.55)'">MENÚ</a>
         <a href="tel:022625128477" class="nav-tel">02262 51-2847</a>
       </div>
     </nav>
