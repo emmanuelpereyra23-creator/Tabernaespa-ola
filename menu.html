@@ -1,525 +1,644 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Carta — Taberna Española · Necochea</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    :root {
-      --rojo:#C41E3A; --oro:#D4930A; --crema:#F5EDD8; --negro:#090705;
-      --card-bg: rgba(255,255,255,.026);
-    }
-    html { scroll-behavior:smooth; }
-    body {
-      background:var(--negro);
-      color:var(--crema);
-      font-family:'Lora',serif;
-      overflow-x:hidden;
-    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{--rojo:#C41E3A;--oro:#D4930A;--crema:#F5EDD8;--negro:#090705;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--negro);color:var(--crema);font-family:'Lora',serif;overflow-x:hidden;}
 
     /* ── NAV ── */
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:200;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:1.4rem 2.5rem;
-      background:rgba(9,7,5,.92);
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1.3rem 2.5rem;
+      background:rgba(9,7,5,.94);
       border-bottom:1px solid rgba(255,255,255,.05);
-      backdrop-filter:blur(8px);
+      backdrop-filter:blur(10px);
     }
-    .nav-logo {
-      font-family:'Bebas Neue'; font-size:clamp(.85rem,1.5vw,1.3rem);
-      letter-spacing:.15em; color:var(--crema); text-decoration:none;
-    }
-    .nav-logo b { color:var(--rojo); font-weight:400; }
-    .nav-back {
-      font-family:'Oswald'; font-size:.65rem; letter-spacing:.2em;
-      text-transform:uppercase; color:rgba(245,237,216,.45);
-      text-decoration:none; transition:color .2s;
-      display:flex; align-items:center; gap:.5rem;
-    }
-    .nav-back:hover { color:var(--crema); }
-    .nav-back::before { content:'←'; font-size:.8rem; }
+    .nav-logo{font-family:'Bebas Neue';font-size:clamp(.85rem,1.5vw,1.25rem);letter-spacing:.15em;color:var(--crema);text-decoration:none;}
+    .nav-logo b{color:var(--rojo);font-weight:400;}
+    .nav-back{font-family:'Oswald';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,237,216,.4);text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:.4rem;}
+    .nav-back::before{content:'←';}
+    .nav-back:hover{color:var(--crema);}
 
     /* ── HERO ── */
-    .hero {
-      min-height:52vh;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      text-align:center;
-      padding:7rem 2rem 4rem;
-      position:relative; overflow:hidden;
-    }
-    .hero::before {
-      content:'CARTA';
-      position:absolute; font-family:'Bebas Neue';
-      font-size:clamp(14rem,34vw,40rem);
-      color:rgba(245,237,216,.018);
-      white-space:nowrap; user-select:none;
-      top:50%; left:50%; transform:translate(-50%,-50%);
-      line-height:1;
-    }
-    .hero-eyebrow {
-      font-family:'Oswald'; font-size:.62rem; letter-spacing:.38em;
-      text-transform:uppercase; color:var(--oro); margin-bottom:1.5rem;
-    }
-    .hero-title {
-      font-family:'Bebas Neue';
-      font-size:clamp(4rem,12vw,10rem);
-      line-height:.88; color:var(--crema);
-    }
-    .hero-title span { -webkit-text-stroke:1.5px var(--crema); color:transparent; }
-    .hero-sub {
-      font-family:'Lora'; font-style:italic;
-      font-size:clamp(.82rem,1.1vw,.95rem);
-      color:rgba(245,237,216,.38); margin-top:1.6rem;
-    }
-    .hero-line {
-      width:1px; height:60px;
-      background:linear-gradient(to bottom, var(--oro), transparent);
-      margin:2.5rem auto 0;
-    }
+    .hero{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'CARTA';position:absolute;font-family:'Bebas Neue';font-size:clamp(12rem,32vw,38rem);color:rgba(245,237,216,.016);white-space:nowrap;user-select:none;top:50%;left:50%;transform:translate(-50%,-50%);}
+    .eyebrow{font-family:'Oswald';font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--oro);margin-bottom:1.4rem;}
+    .hero-title{font-family:'Bebas Neue';font-size:clamp(4rem,11vw,9.5rem);line-height:.88;color:var(--crema);}
+    .hero-title span{-webkit-text-stroke:1.5px var(--crema);color:transparent;}
+    .hero-sub{font-family:'Lora';font-style:italic;font-size:clamp(.8rem,1.1vw,.93rem);color:rgba(245,237,216,.36);margin-top:1.5rem;}
+    .hero-rule{width:1px;height:55px;background:linear-gradient(to bottom,var(--oro),transparent);margin:2.5rem auto 0;}
 
-    /* ── SECTIONS ── */
-    .menu-section { padding:5rem 2.5rem 4rem; max-width:1200px; margin:0 auto; }
+    /* ── SECTION ── */
+    .ms{padding:5rem 2.5rem 3.5rem;max-width:1280px;margin:0 auto;}
 
-    .cat-header {
-      display:flex; align-items:center; gap:1.5rem;
-      margin-bottom:3.5rem;
-    }
-    .cat-bar { flex:1; height:1px; background:rgba(245,237,216,.08); }
-    .cat-label {
-      font-family:'Bebas Neue'; font-size:clamp(2.8rem,7vw,6rem);
-      color:rgba(245,237,216,.07); letter-spacing:.06em;
-      white-space:nowrap;
-    }
-    .cat-pill {
-      font-family:'Oswald'; font-size:.58rem; letter-spacing:.28em;
-      text-transform:uppercase; color:var(--oro);
-      border:1px solid rgba(212,147,10,.3); padding:.28rem .9rem; border-radius:20px;
-      white-space:nowrap;
-    }
+    .cat-head{display:flex;align-items:center;gap:1.4rem;margin-bottom:3.5rem;}
+    .cat-bar{flex:1;height:1px;background:rgba(245,237,216,.07);}
+    .cat-name{font-family:'Bebas Neue';font-size:clamp(3rem,8vw,7rem);color:rgba(245,237,216,.06);letter-spacing:.05em;white-space:nowrap;}
+    .cat-pill{font-family:'Oswald';font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro);border:1px solid rgba(212,147,10,.28);padding:.26rem .85rem;border-radius:20px;white-space:nowrap;}
 
-    /* ── DISH GRID ── */
-    .dishes { display:grid; gap:2px; }
-    .dishes.col2 { grid-template-columns:1fr 1fr; }
-    .dishes.col3 { grid-template-columns:repeat(3,1fr); }
+    /* ── GRID ── */
+    .grid{display:grid;gap:2px;}
+    .g3{grid-template-columns:repeat(3,1fr);}
+    .g2{grid-template-columns:repeat(2,1fr);}
+    .g1{grid-template-columns:1fr;}
+    .span2{grid-column:span 2;}
+    .span3{grid-column:1/-1;}
 
-    .dish {
-      background:var(--card-bg);
-      border:1px solid rgba(255,255,255,.05);
-      overflow:hidden;
-      position:relative;
-      transition:border-color .3s, transform .3s;
-    }
-    .dish:hover { border-color:rgba(196,30,58,.3); transform:translateY(-3px); }
+    /* ── CARD ── */
+    .card{background:rgba(255,255,255,.024);border:1px solid rgba(255,255,255,.047);overflow:hidden;transition:border-color .3s,transform .3s;cursor:default;}
+    .card:hover{border-color:rgba(196,30,58,.28);transform:translateY(-3px);}
+    .card.sig{border-color:rgba(212,147,10,.18);background:rgba(212,147,10,.035);}
+    .card.sig:hover{border-color:rgba(212,147,10,.45);}
 
-    /* Full-photo card */
-    .dish-photo {
-      width:100%; aspect-ratio:4/3; overflow:hidden;
-      position:relative; background:#0E0A07;
-    }
-    .dish-photo img {
-      width:100%; height:100%; object-fit:cover; display:block;
-      transition:transform .6s ease, opacity .4s;
-      opacity:.88;
-    }
-    .dish:hover .dish-photo img { transform:scale(1.04); opacity:1; }
-    .dish-photo .no-photo {
-      width:100%; height:100%;
-      display:flex; align-items:center; justify-content:center;
-      flex-direction:column; gap:.5rem;
-      background:linear-gradient(135deg,#0E0A07 0%, #1a1208 100%);
-    }
-    .dish-photo .no-photo span { font-size:2.5rem; opacity:.35; }
-    .dish-photo .no-photo p {
-      font-family:'Oswald'; font-size:.52rem; letter-spacing:.2em;
-      text-transform:uppercase; color:rgba(245,237,216,.18);
-    }
+    .photo{width:100%;overflow:hidden;background:#0D0905;position:relative;}
+    .photo.r43{aspect-ratio:4/3;}
+    .photo.r169{aspect-ratio:16/9;}
+    .photo.r2110{aspect-ratio:21/8;}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;transition:transform .6s ease,opacity .35s;}
+    .card:hover .photo img{transform:scale(1.04);opacity:1;}
+    .nophoto{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;background:linear-gradient(135deg,#0E0A07,#1a1208);}
+    .nophoto i{font-size:2.2rem;opacity:.3;}
+    .nophoto p{font-family:'Oswald';font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,237,216,.16);}
 
-    .dish-body { padding:1.4rem 1.6rem 1.6rem; }
-    .dish-name {
-      font-family:'Bebas Neue'; font-size:clamp(1.5rem,3vw,2.4rem);
-      letter-spacing:.04em; color:var(--crema); line-height:.95;
-      margin-bottom:.8rem;
-    }
-    .dish-name .star { color:var(--rojo); font-size:.75em; }
-    .dish-desc {
-      font-family:'Lora'; font-style:italic;
-      font-size:clamp(.76rem,.9vw,.84rem); line-height:1.7;
-      color:rgba(245,237,216,.42);
-    }
-    .dish-tag {
-      display:inline-block; margin-top:.85rem;
-      font-family:'Oswald'; font-size:.52rem; letter-spacing:.18em;
-      text-transform:uppercase; color:var(--rojo);
-      border-top:1px solid rgba(196,30,58,.3); padding-top:.5rem;
-    }
+    .info{padding:1.3rem 1.5rem 1.6rem;}
+    .name{font-family:'Bebas Neue';font-size:clamp(1.4rem,2.8vw,2.2rem);letter-spacing:.04em;color:var(--crema);line-height:.95;margin-bottom:.7rem;}
+    .name .star{color:var(--rojo);font-size:.75em;}
+    .name .sub{font-family:'Oswald';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,237,216,.28);display:block;margin-top:.25rem;font-weight:300;}
+    .desc{font-family:'Lora';font-style:italic;font-size:clamp(.74rem,.88vw,.82rem);line-height:1.72;color:rgba(245,237,216,.4);}
+    .tag{display:inline-block;margin-top:.8rem;font-family:'Oswald';font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rojo);border-top:1px solid rgba(196,30,58,.28);padding-top:.45rem;}
 
-    /* Starred signature dish */
-    .dish.signature {
-      border-color:rgba(212,147,10,.22);
-      background:rgba(212,147,10,.04);
-    }
-    .dish.signature:hover { border-color:rgba(212,147,10,.5); }
-    .dish.signature .dish-photo { aspect-ratio:16/7; }
-
-    /* ── DIVIDER BAND ── */
-    .band { overflow:hidden; background:var(--rojo); padding:.75rem 0; margin:1rem 0; }
-    .band-t { display:flex; width:max-content; animation:mrq 28s linear infinite; }
+    /* ── BAND ── */
+    .band{overflow:hidden;background:var(--rojo);padding:.7rem 0;margin:1rem 0;}
+    .band-t{display:flex;width:max-content;animation:mrq 30s linear infinite;}
     @keyframes mrq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .band-i { font-family:'Bebas Neue'; font-size:.85rem; letter-spacing:.22em;
-      color:rgba(255,255,255,.8); padding:0 2rem; white-space:nowrap; }
-    .band-i::after { content:'✦'; margin-left:2rem; font-size:.4rem; opacity:.55; vertical-align:middle; }
+    .band-i{font-family:'Bebas Neue';font-size:.82rem;letter-spacing:.22em;color:rgba(255,255,255,.82);padding:0 1.8rem;white-space:nowrap;}
+    .band-i::after{content:'✦';margin-left:1.8rem;font-size:.38rem;opacity:.55;vertical-align:middle;}
 
-    /* ── SCROLL REVEAL ── */
-    .rv { opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
-    .rv.in { opacity:1; transform:translateY(0); }
-    .rv.d1 { transition-delay:.08s; }
-    .rv.d2 { transition-delay:.18s; }
-    .rv.d3 { transition-delay:.28s; }
-    .rv.d4 { transition-delay:.38s; }
-    .rv.d5 { transition-delay:.48s; }
-    .rv.d6 { transition-delay:.58s; }
+    /* ── CTA ── */
+    .cta{padding:5rem 2.5rem;text-align:center;border-top:1px solid rgba(255,255,255,.04);background:rgba(196,30,58,.03);}
+    .cta-t{font-family:'Bebas Neue';font-size:clamp(2.8rem,7vw,6.5rem);color:var(--crema);line-height:.9;margin-bottom:.4rem;}
+    .cta-t span{-webkit-text-stroke:1.5px var(--crema);color:transparent;}
+    .cta-p{font-family:'Lora';font-style:italic;color:rgba(245,237,216,.36);font-size:.88rem;margin-bottom:2.2rem;}
+    .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    .btn-rojo{font-family:'Oswald';font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;background:var(--rojo);color:#fff;padding:.85rem 2.2rem;text-decoration:none;transition:background .2s;}
+    .btn-rojo:hover{background:#991527;}
+    .btn-wsp{font-family:'Oswald';font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;background:#25D366;color:#fff;padding:.85rem 2.2rem;text-decoration:none;transition:opacity .2s;}
+    .btn-wsp:hover{opacity:.85;}
 
     /* ── FOOTER ── */
-    footer {
-      background:#0E0B08; border-top:1px solid rgba(255,255,255,.04);
-      padding:3rem 2.5rem 2rem; text-align:center;
-    }
-    .ft-brand {
-      font-family:'Bebas Neue'; font-size:clamp(3rem,10vw,9rem);
-      color:rgba(245,237,216,.04); line-height:.9; user-select:none;
-    }
-    .ft-info {
-      font-family:'Oswald'; font-size:.6rem; letter-spacing:.2em;
-      text-transform:uppercase; color:rgba(245,237,216,.2);
-      margin-top:.8rem;
-    }
-    .ft-back {
-      display:inline-block; margin-top:1.5rem;
-      font-family:'Oswald'; font-size:.65rem; letter-spacing:.2em;
-      text-transform:uppercase; color:var(--rojo);
-      text-decoration:none; border:1px solid rgba(196,30,58,.35);
-      padding:.6rem 1.8rem; transition:background .25s, color .25s;
-    }
-    .ft-back:hover { background:var(--rojo); color:#fff; }
+    footer{background:#0D0A07;border-top:1px solid rgba(255,255,255,.04);padding:3rem 2.5rem 2rem;text-align:center;}
+    .ft-brand{font-family:'Bebas Neue';font-size:clamp(3rem,10vw,9rem);color:rgba(245,237,216,.04);line-height:.9;user-select:none;}
+    .ft-info{font-family:'Oswald';font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,237,216,.18);margin-top:.8rem;}
+    .ft-back{display:inline-block;margin-top:1.4rem;font-family:'Oswald';font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo);text-decoration:none;border:1px solid rgba(196,30,58,.32);padding:.55rem 1.7rem;transition:background .25s,color .25s;}
+    .ft-back:hover{background:var(--rojo);color:#fff;}
+
+    /* ── REVEAL ── */
+    .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;}
+    .rv.in{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.07s}.d2{transition-delay:.15s}.d3{transition-delay:.23s}
+    .d4{transition-delay:.31s}.d5{transition-delay:.39s}.d6{transition-delay:.47s}
 
     /* ── RESPONSIVE ── */
-    @media(max-width:900px) {
-      .dishes.col3 { grid-template-columns:1fr 1fr; }
-    }
-    @media(max-width:600px) {
-      nav { padding:1rem 1.3rem; }
-      .menu-section { padding:3.5rem 1.2rem 2.5rem; }
-      .cat-header { gap:.8rem; }
-      .dishes.col2, .dishes.col3 { grid-template-columns:1fr; }
-      .dish.signature .dish-photo { aspect-ratio:4/3; }
+    @media(max-width:900px){.g3{grid-template-columns:repeat(2,1fr)}.span2{grid-column:span 1}.span3{grid-column:span 1}}
+    @media(max-width:580px){
+      nav{padding:1rem 1.2rem;}
+      .ms{padding:3rem 1.1rem 2rem;}
+      .g3,.g2{grid-template-columns:1fr;}
+      .span2,.span3{grid-column:span 1;}
+      .photo.r2110{aspect-ratio:4/3;}
+      .photo.r169{aspect-ratio:4/3;}
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="index.html" class="nav-logo">TABERNA ESPAÑOLA<b>.</b></a>
-    <a href="index.html" class="nav-back">Inicio</a>
-  </nav>
+<nav>
+  <a href="index.html" class="nav-logo">TABERNA ESPAÑOLA<b>.</b></a>
+  <a href="index.html" class="nav-back">Inicio</a>
+</nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <p class="hero-eyebrow rv">Necochea · Buenos Aires · Cocina española de autor</p>
-    <h1 class="hero-title rv">NUESTRA<br><span>CARTA</span></h1>
-    <p class="hero-sub rv">Del mar a la mesa &middot; Ingredientes frescos, tradición española</p>
-    <div class="hero-line rv"></div>
-  </header>
+<!-- HERO -->
+<header class="hero">
+  <p class="eyebrow rv">Necochea · Buenos Aires · Cocina española de autor</p>
+  <h1 class="hero-title rv">NUESTRA<br><span>CARTA</span></h1>
+  <p class="hero-sub rv">Del mar a la mesa · Ingredientes frescos, tradición española</p>
+  <div class="hero-rule rv"></div>
+</header>
 
-  <!-- ══════════════════════════════════
-       ENTRADAS
-  ══════════════════════════════════ -->
-  <section class="menu-section">
-    <div class="cat-header rv">
-      <div class="cat-bar"></div>
-      <span class="cat-label">ENTRADAS</span>
-      <div class="cat-bar"></div>
-    </div>
-    <div class="dishes col3">
 
-      <div class="dish rv d1">
-        <div class="dish-photo">
-          <img src="entrada-falafel.jpg" alt="Falafel para dos" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🫓</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Falafel para Dos</div>
-          <p class="dish-desc">Croquetas de garbanzo y especias mediterráneas, doradas por fuera y esponjosas por dentro. Servidas con salsa de yogur y hierbas frescas.</p>
-          <span class="dish-tag">Para Compartir</span>
-        </div>
-      </div>
-
-      <div class="dish rv d2">
-        <div class="dish-photo">
-          <img src="ensalada-rucula.jpg" alt="Rúcula con parmesano" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🥗</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Rúcula con Parmesano</div>
-          <p class="dish-desc">Hojas de rúcula fresca con láminas de parmesano añejo, remolacha asada y reducción balsámica. Fresca y elegante.</p>
-          <span class="dish-tag">Ensalada</span>
-        </div>
-      </div>
-
-      <div class="dish rv d3">
-        <div class="dish-photo">
-          <img src="ensalada-mix.jpg" alt="Ensalada Mix" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🥬</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Ensalada Mix de la Casa</div>
-          <p class="dish-desc">Lechuga crocante, tomate cherry, cebolla morada y aderezo de la casa. Sencilla, honesta, perfecta como acompañamiento.</p>
-          <span class="dish-tag">Ensalada</span>
-        </div>
-      </div>
-
-      <div class="dish rv d4" style="grid-column:1/-1">
-        <div class="dish-photo" style="aspect-ratio:21/6">
-          <img src="entrada-gratinados.jpg" alt="Gratinados" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🦑</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Gratinados del Mar</div>
-          <p class="dish-desc">Rabas, langostinos y calamares frescos, fritos en aceite bien caliente hasta lograr una costra dorada y crocante. Con limón exprimido y alioli. Un imprescindible para empezar.</p>
-          <span class="dish-tag">Para Compartir · Mariscos</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="band">
-    <div class="band-t">
-      <span class="band-i">Paella de Mariscos</span><span class="band-i">Del Atlántico Sur</span>
-      <span class="band-i">Azafrán · Langostinos</span><span class="band-i">Cocina Española</span>
-      <span class="band-i">Necochea · Buenos Aires</span><span class="band-i">Tradición y Sabor</span>
-      <span class="band-i">Paella de Mariscos</span><span class="band-i">Del Atlántico Sur</span>
-      <span class="band-i">Azafrán · Langostinos</span><span class="band-i">Cocina Española</span>
-      <span class="band-i">Necochea · Buenos Aires</span><span class="band-i">Tradición y Sabor</span>
-    </div>
+<!-- ═══════════════════════════════════
+     ENTRADAS
+════════════════════════════════════ -->
+<section class="ms">
+  <div class="cat-head rv">
+    <div class="cat-bar"></div>
+    <span class="cat-name">ENTRADAS</span>
+    <div class="cat-bar"></div>
   </div>
 
-  <!-- ══════════════════════════════════
-       PAELLAS DE MARISCOS
-  ══════════════════════════════════ -->
-  <section class="menu-section">
-    <div class="cat-header rv">
-      <div class="cat-bar"></div>
-      <span class="cat-label">PAELLAS</span>
-      <div class="cat-bar"></div>
+  <div class="grid g3">
+
+    <!-- Rabas para uno / para dos -->
+    <div class="card rv d1">
+      <div class="photo r43">
+        <img src="rabas.png" alt="Rabas" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Rabas<span class="sub">Para uno · Para dos</span></div>
+        <p class="desc">Calamares frescos cortados en anillos, rebozados en harina y fritos hasta lograr una costra dorada y crujiente. Servidos con limón y alioli. El clásico imprescindible de la Taberna.</p>
+        <span class="tag">Entrada · Frita</span>
+      </div>
     </div>
-    <div class="dishes" style="grid-template-columns:1fr 1fr; gap:2px;">
 
-      <div class="dish signature rv d1" style="grid-column:1/-1">
-        <div class="dish-photo">
-          <img src="paella-mariscos.jpg" alt="Paella de Mariscos" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🥘</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Paella de Mariscos <span class="star">★ N°1</span></div>
-          <p class="dish-desc">Arroz bomba Calasparra, langostinos del Atlántico, mejillones de roca, calamares frescos y azafrán de La Mancha. Cuarenta minutos de fuego vivo. El plato que hizo famosa a la Taberna. Disponible en porción individual o para compartir.</p>
-          <span class="dish-tag">Especialidad · Plato Insignia</span>
-        </div>
+    <!-- Rabas a la Provenzal -->
+    <div class="card rv d2">
+      <div class="photo r43">
+        <img src="rabas-provenzal.png" alt="Rabas a la Provenzal" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
       </div>
-
+      <div class="info">
+        <div class="name">Rabas a la Provenzal<span class="sub">Para dos</span></div>
+        <p class="desc">Las rabas clásicas elevadas con un manto de provenzal: ajo, perejil fresco picado y aceite de oliva. Aromáticas, doradas, perfectas para compartir.</p>
+        <span class="tag">Entrada · Provenzal</span>
+      </div>
     </div>
-  </section>
 
-  <!-- ══════════════════════════════════
-       PESCADOS
-  ══════════════════════════════════ -->
-  <section class="menu-section">
-    <div class="cat-header rv">
-      <div class="cat-bar"></div>
-      <span class="cat-label">PESCADOS</span>
-      <div class="cat-bar"></div>
+    <!-- Rabas con aros de cebolla -->
+    <div class="card rv d3">
+      <div class="photo r43">
+        <img src="rabas-cebolla.png" alt="Rabas con Aros de Cebolla" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Rabas con Aros de Cebolla<span class="sub">Para dos</span></div>
+        <p class="desc">Combinación irresistible de rabas tiernas y aros de cebolla dulce, rebozados juntos y fritos hasta el punto exacto. Crocantes, sabrosos, difíciles de parar.</p>
+        <span class="tag">Entrada · Para Compartir</span>
+      </div>
     </div>
-    <div class="dishes col3">
 
-      <div class="dish rv d1">
-        <div class="dish-photo">
-          <img src="salmon-verdeo.jpg" alt="Salmón al Verdeo" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🐟</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Salmón Rosado al Verdeo</div>
-          <p class="dish-desc">Filete de salmón rosado sobre salsa de verdeo suave, con puré cremoso. Un contraste delicado entre la riqueza del pescado y la frescura de las hierbas.</p>
-          <span class="dish-tag">Pescado · Suave</span>
-        </div>
+    <!-- Calamaretes fritos -->
+    <div class="card rv d4">
+      <div class="photo r43">
+        <img src="calamaretes-fritos.png" alt="Calamaretes Fritos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦑</i><p>Próximamente</p></div>'">
       </div>
-
-      <div class="dish rv d2">
-        <div class="dish-photo">
-          <img src="salmon-grill.jpg" alt="Salmón a la Parrilla" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🐟</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Salmón Rosado Grill</div>
-          <p class="dish-desc">Filete a la parrilla con marcas perfectas, piel crujiente y centro jugoso. Servido con limón, alcaparras y mantequilla de hierbas.</p>
-          <span class="dish-tag">Pescado · A la Parrilla</span>
-        </div>
+      <div class="info">
+        <div class="name">Calamaretes Fritos<span class="sub">Para dos</span></div>
+        <p class="desc">Calamaretes enteros y tiernos, apenas rebozados y fritos en aceite bien caliente. Su tamaño pequeño los hace más sabrosos y crujientes que los anillos tradicionales.</p>
+        <span class="tag">Entrada · Frita</span>
       </div>
-
-      <div class="dish rv d3">
-        <div class="dish-photo">
-          <img src="abadejo-roquefort.jpg" alt="Abadejo al Roquefort" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🐠</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Abadejo al Roquefort</div>
-          <p class="dish-desc">Filete de abadejo del Atlántico con salsa de roquefort cremosa, nueces tostadas y ciboulette. Una combinación intensa que conquista desde el primer bocado.</p>
-          <span class="dish-tag">Pescado · Salsa</span>
-        </div>
-      </div>
-
-      <div class="dish rv d4">
-        <div class="dish-photo">
-          <img src="abadejo-grill.jpg" alt="Abadejo a la Parrilla" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🐠</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Abadejo Grill</div>
-          <p class="dish-desc">Abadejo local a la parrilla, con su textura firme y sabor delicado. Acompañado de ensalada fresca y rodajas de limón. Sencillo y perfecto.</p>
-          <span class="dish-tag">Pescado · A la Parrilla</span>
-        </div>
-      </div>
-
-      <div class="dish rv d5" style="grid-column:span 2">
-        <div class="dish-photo" style="aspect-ratio:16/7">
-          <img src="merluza-langostinos.jpg" alt="Merluza en Salsa de Langostinos" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🦐</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Merluza en Salsa de Langostinos</div>
-          <p class="dish-desc">Filete de merluza fresca bañado en salsa cremosa de langostinos del Atlántico Sur, pimentón ahumado y un toque de azafrán. Un puente entre el mar y la tradición española.</p>
-          <span class="dish-tag">Pescado · Especialidad · Mariscos</span>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <div class="band">
-    <div class="band-t">
-      <span class="band-i">Gambas al Ajillo</span><span class="band-i">Mejillones del Mar</span>
-      <span class="band-i">Mariscos Frescos</span><span class="band-i">Platos de la Casa</span>
-      <span class="band-i">Sabor Atlántico</span><span class="band-i">Cocina con Alma</span>
-      <span class="band-i">Gambas al Ajillo</span><span class="band-i">Mejillones del Mar</span>
-      <span class="band-i">Mariscos Frescos</span><span class="band-i">Platos de la Casa</span>
-      <span class="band-i">Sabor Atlántico</span><span class="band-i">Cocina con Alma</span>
+    <!-- Mix de Mariscos -->
+    <div class="card rv d5">
+      <div class="photo r43">
+        <img src="mix-mariscos.png" alt="Mix de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Mix de Mariscos<span class="sub">Para uno · Para dos</span></div>
+        <p class="desc">La mejor selección frita de la Taberna: rabas, langostinos y calamaretes fritos, reunidos en una misma fuente. Para los que no pueden elegir uno solo.</p>
+        <span class="tag">Entrada · Para Compartir</span>
+      </div>
     </div>
+
+    <!-- Cornilitos -->
+    <div class="card rv d6">
+      <div class="photo r43">
+        <img src="cornilitos.png" alt="Cornilitos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Cornalitos<span class="sub">Para dos</span></div>
+        <p class="desc">Pequeños peces plateados del Atlántico, fritos enteros hasta quedar crujientes y dorados. Se comen de un bocado con limón exprimido. Un clásico de la costa que la Taberna mantiene con fidelidad.</p>
+        <span class="tag">Entrada · Frita · Clásico de Costa</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     ENSALADAS
+════════════════════════════════════ -->
+<div class="band">
+  <div class="band-t">
+    <span class="band-i">Entradas del Mar</span><span class="band-i">Rabas Crocantes</span>
+    <span class="band-i">Mariscos Frescos</span><span class="band-i">Cocina Española</span>
+    <span class="band-i">Necochea · Atlántico</span><span class="band-i">Sabor y Tradición</span>
+    <span class="band-i">Entradas del Mar</span><span class="band-i">Rabas Crocantes</span>
+    <span class="band-i">Mariscos Frescos</span><span class="band-i">Cocina Española</span>
+    <span class="band-i">Necochea · Atlántico</span><span class="band-i">Sabor y Tradición</span>
+  </div>
+</div>
+
+<section class="ms">
+  <div class="cat-head rv">
+    <div class="cat-bar"></div>
+    <span class="cat-name">ENSALADAS</span>
+    <div class="cat-bar"></div>
   </div>
 
-  <!-- ══════════════════════════════════
-       PLATOS PRINCIPALES
-  ══════════════════════════════════ -->
-  <section class="menu-section">
-    <div class="cat-header rv">
-      <div class="cat-bar"></div>
-      <span class="cat-label">PLATOS</span>
-      <div class="cat-bar"></div>
+  <div class="grid g2">
+
+    <div class="card rv d1">
+      <div class="photo r43">
+        <img src="ensalada-mixta.png" alt="Ensalada Mixta" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥗</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Ensalada Mixta</div>
+        <p class="desc">Lechuga crocante, tomate maduro y cebolla morada con aderezo de la casa. Fresca, liviana y perfecta como entrada o acompañamiento de cualquier plato.</p>
+        <span class="tag">Ensalada · Vegetariana</span>
+      </div>
     </div>
-    <div class="dishes col2">
 
-      <div class="dish rv d1">
-        <div class="dish-photo">
-          <img src="mejillones-gratinados.jpg" alt="Mejillones Gratinados" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🦪</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Mejillones Gratinados ½ Valva</div>
-          <p class="dish-desc">Mejillones frescos servidos en media valva, gratinados al horno con mantequilla de ajo, queso parmesano y perejil. Dorados y perfectos, listos para disfrutar directamente de la concha.</p>
-          <span class="dish-tag">Mariscos · Gratinado</span>
-        </div>
+    <div class="card rv d2">
+      <div class="photo r43">
+        <img src="ensalada-rucula.png" alt="Rúcula y Parmesano" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥗</i><p>Próximamente</p></div>'">
       </div>
-
-      <div class="dish rv d2">
-        <div class="dish-photo">
-          <img src="omelette-camarones.jpg" alt="Omelette de Camarones" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🍳</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Omelette de Camarones</div>
-          <p class="dish-desc">Omelette esponjoso relleno de camarones salteados y queso parmesano fundido. Servido con papas doradas. Un plato reconfortante con sabor a mar.</p>
-          <span class="dish-tag">Mariscos · Queso</span>
-        </div>
+      <div class="info">
+        <div class="name">Rúcula y Parmesano</div>
+        <p class="desc">Hojas de rúcula fresca con láminas de parmesano añejo, nueces y reducción de aceto balsámico. Un clásico de la cocina mediterránea con sabor intenso y elegante.</p>
+        <span class="tag">Ensalada · Mediterránea</span>
       </div>
-
-      <div class="dish rv d3">
-        <div class="dish-photo">
-          <img src="gambas-ajillo.jpg" alt="Gambas al Ajillo" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🦐</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Gambas al Ajillo con Papas</div>
-          <p class="dish-desc">Langostinos saltados en aceite de oliva virgen con ajo laminado y guindilla, servidos chisporroteando en cazuela de barro. Con papas doradas para acompañar el jugo.</p>
-          <span class="dish-tag">Gambas · Clásico Español</span>
-        </div>
-      </div>
-
-      <div class="dish rv d4">
-        <div class="dish-photo">
-          <img src="gambas-quesos.jpg" alt="Gambas con Quesos" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🦐</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Gambas con Quesos Gratinados</div>
-          <p class="dish-desc">Langostinos frescos cubiertos con una mezcla de quesos gratinados al horno. Dorados, fundentes, irresistibles. Una vuelta de tuerca sobre el clásico que sorprende siempre.</p>
-          <span class="dish-tag">Gambas · Gratinado</span>
-        </div>
-      </div>
-
-      <div class="dish rv d5" style="grid-column:1/-1">
-        <div class="dish-photo" style="aspect-ratio:21/7">
-          <img src="gambas-pescadora.jpg" alt="Gambas a la Pescadora" onerror="this.parentElement.innerHTML='<div class=no-photo><span>🦐</span><p>Próximamente</p></div>'">
-        </div>
-        <div class="dish-body">
-          <div class="dish-name">Gambas a la Pescadora</div>
-          <p class="dish-desc">Langostinos en salsa española de tomate, pimiento rojo, cebolla, ajo y vino blanco. Cocción lenta que concentra todos los sabores del mar y la huerta. Se sirve con pan de campo para no dejar ni una gota de salsa.</p>
-          <span class="dish-tag">Gambas · Salsa Española · Recomendado</span>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- ══════════════════════════════════
-       CTA RESERVAS
-  ══════════════════════════════════ -->
-  <section style="padding:4rem 2.5rem; text-align:center; border-top:1px solid rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.04); background:rgba(196,30,58,.04);">
-    <p class="hero-eyebrow rv" style="margin-bottom:1rem">Reservas y consultas</p>
-    <h2 class="rv" style="font-family:'Bebas Neue';font-size:clamp(3rem,8vw,7rem);color:var(--crema);line-height:.9;margin-bottom:1.5rem">
-      ¿LISTO PARA<br><span style="-webkit-text-stroke:1.5px var(--crema);color:transparent">TU MESA?</span>
-    </h2>
-    <p class="rv d1" style="font-family:'Lora';font-style:italic;color:rgba(245,237,216,.38);font-size:.9rem;margin-bottom:2.5rem">
-      Reservas por teléfono o WhatsApp · Lun–Dom 12:00–15:00 y 20:00–23:30
-    </p>
-    <div class="rv d2" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="tel:022625128477"
-         style="font-family:'Oswald';font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;background:var(--rojo);color:#fff;padding:.9rem 2.4rem;text-decoration:none;transition:background .2s"
-         onmouseover="this.style.background='#991527'" onmouseout="this.style.background='var(--rojo)'">
-        Llamar ahora
-      </a>
-      <a href="https://wa.me/5402262512847?text=Hola%2C%20quiero%20hacer%20una%20reserva"
-         target="_blank"
-         style="font-family:'Oswald';font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;background:#25D366;color:#fff;padding:.9rem 2.4rem;text-decoration:none;transition:opacity .2s"
-         onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-        WhatsApp
-      </a>
+    <div class="card rv d3">
+      <div class="photo r43">
+        <img src="ensalada-caesar.png" alt="Ensalada Caesar" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥬</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Ensalada Caesar</div>
+        <p class="desc">Lechuga romana crujiente, crutones dorados, parmesano rallado y la inconfundible salsa Caesar casera con anchoas. Un clásico eterno que nunca defrauda.</p>
+        <span class="tag">Ensalada · Clásica</span>
+      </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="ft-brand">TABERNA ESPAÑOLA</div>
-    <p class="ft-info">C. 83 N° 350 · Necochea, Buenos Aires · 02262 51-2847</p>
-    <a href="index.html" class="ft-back">← Volver al inicio</a>
-  </footer>
+    <div class="card rv d4">
+      <div class="photo r43">
+        <img src="ensalada-mariscos.png" alt="Ensalada de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Ensalada de Mariscos</div>
+        <p class="desc">Langostinos, mejillones y calamares sobre base de hojas verdes, tomate y palta, con aliño cítrico. Una ensalada generosa que es casi un plato principal.</p>
+        <span class="tag">Ensalada · Mariscos</span>
+      </div>
+    </div>
 
-  <script>
-    // Scroll reveal
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold:.12, rootMargin:'0px 0px -40px 0px' });
-    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
-  </script>
+  </div>
+</section>
 
+
+<!-- ═══════════════════════════════════
+     PLATOS PRINCIPALES — GAMBAS & MAR
+════════════════════════════════════ -->
+<div class="band">
+  <div class="band-t">
+    <span class="band-i">Gambas al Ajillo</span><span class="band-i">Mejillones Gratinados</span>
+    <span class="band-i">Del Mar a la Mesa</span><span class="band-i">Mariscos del Atlántico</span>
+    <span class="band-i">Taberna Española</span><span class="band-i">Necochea · Buenos Aires</span>
+    <span class="band-i">Gambas al Ajillo</span><span class="band-i">Mejillones Gratinados</span>
+    <span class="band-i">Del Mar a la Mesa</span><span class="band-i">Mariscos del Atlántico</span>
+    <span class="band-i">Taberna Española</span><span class="band-i">Necochea · Buenos Aires</span>
+  </div>
+</div>
+
+<section class="ms">
+  <div class="cat-head rv">
+    <div class="cat-bar"></div>
+    <span class="cat-name">PLATOS DE MAR</span>
+    <div class="cat-bar"></div>
+  </div>
+
+  <div class="grid g3">
+
+    <div class="card rv d1">
+      <div class="photo r43">
+        <img src="mejillones-gratinados.png" alt="Mejillones Gratinados" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦪</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Mejillones Gratinados<span class="sub">½ Valva</span></div>
+        <p class="desc">Mejillones frescos en media valva cubiertos con mantequilla de ajo, queso parmesano y perejil, gratinados al horno hasta dorar. Se sirven chisporroteando, listos para comer de la concha.</p>
+        <span class="tag">Mariscos · Gratinado</span>
+      </div>
+    </div>
+
+    <div class="card rv d2">
+      <div class="photo r43">
+        <img src="omelette-camarones.png" alt="Omelette de Camarones" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🍳</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Omelette de Camarones</div>
+        <p class="desc">Omelette esponjoso relleno de camarones salteados y queso parmesano fundido, acompañado de papas doradas. Un plato cálido y reconfortante con alma marinera.</p>
+        <span class="tag">Mariscos · Queso</span>
+      </div>
+    </div>
+
+    <div class="card rv d3">
+      <div class="photo r43">
+        <img src="gambas-ajillo.png" alt="Gambas al Ajillo" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Gambas al Ajillo<span class="sub">Con papas</span></div>
+        <p class="desc">Langostinos frescos saltados en aceite de oliva con ajo laminado y guindilla, servidos en cazuela de barro chisporroteante. Las papas acompañan para aprovechar hasta la última gota de aceite.</p>
+        <span class="tag">Gambas · Clásico Español</span>
+      </div>
+    </div>
+
+    <div class="card rv d4">
+      <div class="photo r43">
+        <img src="gambas-4quesos.png" alt="Gambas 4 Quesos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Gambas 4 Quesos Gratinadas<span class="sub">Con papas</span></div>
+        <p class="desc">Langostinos cubiertos con una mezcla de cuatro quesos fundidos y gratinados al horno hasta lograr una costra dorada e irresistible. Una versión indulgente y diferente del clásico.</p>
+        <span class="tag">Gambas · Gratinado</span>
+      </div>
+    </div>
+
+    <div class="card rv d5 span2">
+      <div class="photo r169">
+        <img src="gambas-pescadora.png" alt="Gambas a la Pescadora" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Gambas a la Pescadora</div>
+        <p class="desc">Langostinos en salsa española de tomate, pimiento rojo asado, cebolla, ajo y vino blanco. Una cocción lenta que concentra todos los sabores del mar y la huerta. Con pan de campo para no perder ni una gota de salsa.</p>
+        <span class="tag">Gambas · Salsa Española · Recomendado</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     ESPECIALIDADES
+════════════════════════════════════ -->
+<div class="band">
+  <div class="band-t">
+    <span class="band-i">Pulpo a la Gallega</span><span class="band-i">Paella de Mariscos</span>
+    <span class="band-i">Vieiras Gratinadas</span><span class="band-i">Cazuela del Mar</span>
+    <span class="band-i">Especialidades de la Casa</span><span class="band-i">Cocina con Alma</span>
+    <span class="band-i">Pulpo a la Gallega</span><span class="band-i">Paella de Mariscos</span>
+    <span class="band-i">Vieiras Gratinadas</span><span class="band-i">Cazuela del Mar</span>
+    <span class="band-i">Especialidades de la Casa</span><span class="band-i">Cocina con Alma</span>
+  </div>
+</div>
+
+<section class="ms">
+  <div class="cat-head rv">
+    <div class="cat-bar"></div>
+    <span class="cat-name">ESPECIALIDADES</span>
+    <div class="cat-bar"></div>
+  </div>
+
+  <div class="grid g3">
+
+    <!-- Pulpo — full width, signature -->
+    <div class="card sig rv d1 span3">
+      <div class="photo r2110">
+        <img src="pulpo-gallego.png" alt="Pulpo a la Gallega" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐙</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Pulpo Español a la Gallega <span class="star">★</span></div>
+        <p class="desc">Tentáculos de pulpo cocidos a la perfección sobre base de papas al natural, rociados con aceite de oliva virgen extra, pimentón ahumado de La Vera y sal gruesa. Un monumento a la cocina gallega en el Atlántico Sur.</p>
+        <span class="tag">Especialidad · Plato de Autor</span>
+      </div>
+    </div>
+
+    <!-- Paella de Mariscos -->
+    <div class="card sig rv d2 span2">
+      <div class="photo r169">
+        <img src="paella-mariscos.png" alt="Paella de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥘</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Paella de Mariscos <span class="star">★ N°1</span><span class="sub">Para dos personas</span></div>
+        <p class="desc">Arroz bomba Calasparra con langostinos del Atlántico, mejillones de roca, calamares frescos y hebras de azafrán de La Mancha. Cuarenta minutos de fuego vivo. El plato que hizo famosa a la Taberna.</p>
+        <span class="tag">Paella · Plato Insignia · Para Compartir</span>
+      </div>
+    </div>
+
+    <!-- Paella de Vegetales -->
+    <div class="card rv d3">
+      <div class="photo r43">
+        <img src="paella-vegetales.png" alt="Paella de Vegetales" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🥘</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Paella de Vegetales<span class="sub">Para uno</span></div>
+        <p class="desc">Arroz bomba con pimiento, tomate, judías verdes, alcachofas y azafrán. Una paella honesta y colorida, llena de sabor mediterráneo. Opción ideal para quienes prefieren lo vegetal.</p>
+        <span class="tag">Paella · Vegetariana</span>
+      </div>
+    </div>
+
+    <!-- Cazuela de Mariscos -->
+    <div class="card rv d4">
+      <div class="photo r43">
+        <img src="cazuela-mariscos.png" alt="Cazuela de Mariscos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🫕</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Cazuela de Mariscos<span class="sub">Para dos</span></div>
+        <p class="desc">Un guiso generoso de langostinos, mejillones, calamares y papas en caldo de mariscos especiado. Caldoso, profundo y reconfortante. Se sirve con papas para acompañar el caldo.</p>
+        <span class="tag">Mariscos · Para Compartir</span>
+      </div>
+    </div>
+
+    <!-- Vieiras 1/2 valva -->
+    <div class="card rv d5">
+      <div class="photo r43">
+        <img src="vieiras-gratinadas.png" alt="Vieiras Gratinadas" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Vieiras Gratinadas<span class="sub">½ Valva</span></div>
+        <p class="desc">Vieiras frescas servidas en media valva con salsa de ajo, cebolla y vino blanco, gratinadas al horno hasta dorarse. Un bocado delicado con sabor a mar concentrado.</p>
+        <span class="tag">Vieiras · Gratinado</span>
+      </div>
+    </div>
+
+    <!-- Cayos de Vieiras -->
+    <div class="card rv d6">
+      <div class="photo r43">
+        <img src="cayos-vieiras.png" alt="Cayos de Vieiras" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐚</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Cayos de Vieiras Gratinados</div>
+        <p class="desc">Los músculos de las vieiras, tiernos y dulces, gratinados con mantequilla de hierbas y queso. Un plato sutil y elegante que resalta la textura única de este marisco.</p>
+        <span class="tag">Vieiras · Especialidad</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     PICADAS DE MARISCOS
+════════════════════════════════════ -->
+<section class="ms" style="padding-top:1rem;">
+  <div class="cat-head rv">
+    <div class="cat-bar"></div>
+    <span class="cat-name">PICADAS</span>
+    <div class="cat-bar"></div>
+  </div>
+
+  <div class="grid g2">
+
+    <div class="card rv d1">
+      <div class="photo r43">
+        <img src="picada-mariscos-1.png" alt="Picada de Mariscos para 1" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Picada de Mariscos<span class="sub">Para uno</span></div>
+        <p class="desc">Una selección individual de lo mejor de la casa: mejillones en salsa rosa, rabas fritas, langostinos al ajillo y calamares. Para conocer la Taberna en un solo plato.</p>
+        <span class="tag">Picada · Degustación</span>
+      </div>
+    </div>
+
+    <div class="card sig rv d2">
+      <div class="photo r43">
+        <img src="picada-mariscos-2.png" alt="Picada de Mariscos para 2" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🦐</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Picada de Mariscos<span class="sub">Para dos · Gran formato</span></div>
+        <p class="desc">La experiencia completa de la Taberna en una sola mesa: mejillones en salsa rosa, rabas crocantes, langostinos al ajillo, tres gratinadas variadas, cazuela de mariscos y omelette de camarones con parmesano. El festín definitivo.</p>
+        <span class="tag">Picada · Gran Formato · Para Compartir</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     PESCADOS
+════════════════════════════════════ -->
+<div class="band">
+  <div class="band-t">
+    <span class="band-i">Salmón Rosado</span><span class="band-i">Abadejo del Atlántico</span>
+    <span class="band-i">Merluza Rebozada</span><span class="band-i">Mero en Salsa</span>
+    <span class="band-i">Pescados Frescos</span><span class="band-i">Cocina al Momento</span>
+    <span class="band-i">Salmón Rosado</span><span class="band-i">Abadejo del Atlántico</span>
+    <span class="band-i">Merluza Rebozada</span><span class="band-i">Mero en Salsa</span>
+    <span class="band-i">Pescados Frescos</span><span class="band-i">Cocina al Momento</span>
+  </div>
+</div>
+
+<section class="ms">
+  <div class="cat-head rv">
+    <div class="cat-bar"></div>
+    <span class="cat-name">PESCADOS</span>
+    <div class="cat-bar"></div>
+  </div>
+
+  <div class="grid g3">
+
+    <div class="card rv d1">
+      <div class="photo r43">
+        <img src="salmon-verdeo.png" alt="Salmón al Verdeo" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Salmón Rosado al Verdeo<span class="sub">Con papas</span></div>
+        <p class="desc">Filete de salmón rosado sobre cremosa salsa de verdeo, suave y herbácea. Un contraste delicado entre la riqueza del pescado y la frescura de los ajíos. Servido con papas.</p>
+        <span class="tag">Pescado · Suave</span>
+      </div>
+    </div>
+
+    <div class="card sig rv d2 span2">
+      <div class="photo r169">
+        <img src="salmon-pescadora.png" alt="Salmón a la Pescadora" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Salmón Rosado a la Pescadora <span class="star">★</span><span class="sub">Con papas</span></div>
+        <p class="desc">Filete de salmón en salsa de crema verdeo enriquecida con langostinos y mejillones. Una creación de la casa que combina la untuosidad del salmón con el sabor profundo de los mariscos del Atlántico.</p>
+        <span class="tag">Pescado · Especialidad · Mariscos</span>
+      </div>
+    </div>
+
+    <div class="card rv d3">
+      <div class="photo r43">
+        <img src="salmon-grille.png" alt="Salmón Grillé" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐟</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Salmón Rosado Grillé<span class="sub">Con papas</span></div>
+        <p class="desc">Filete a la parrilla con marcas perfectas, piel crocante y centro jugoso. Servido con limón fresco y papas doradas. El salmón en su expresión más pura y honesta.</p>
+        <span class="tag">Pescado · A la Parrilla</span>
+      </div>
+    </div>
+
+    <div class="card rv d4">
+      <div class="photo r43">
+        <img src="merluza-rebozada.png" alt="Merluza Rebozada" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Merluza Rebozada<span class="sub">Con papas</span></div>
+        <p class="desc">Filete de merluza fresca envuelta en un rebozado dorado y crocante, con interior tierno y sabroso. Un clásico de la cocina española de mar con identidad propia.</p>
+        <span class="tag">Pescado · Rebozado</span>
+      </div>
+    </div>
+
+    <div class="card rv d5">
+      <div class="photo r43">
+        <img src="abadejo-grille.png" alt="Abadejo Grillé" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Abadejo Grillé<span class="sub">Con papas</span></div>
+        <p class="desc">Filete de abadejo local a la parrilla, con su textura firme y sabor delicado bien marcados. Sencillo y perfecto. Servido con limón exprimido y papas doradas al costado.</p>
+        <span class="tag">Pescado · A la Parrilla</span>
+      </div>
+    </div>
+
+    <div class="card rv d6">
+      <div class="photo r43">
+        <img src="abadejo-roquefort.png" alt="Abadejo al Roquefort" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐠</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Abadejo al Roquefort<span class="sub">Con papas</span></div>
+        <p class="desc">Filete de abadejo del Atlántico cubierto con salsa de roquefort cremosa, nueces tostadas y ciboulette. Una combinación intensa y sofisticada que conquista desde el primer bocado.</p>
+        <span class="tag">Pescado · Salsa</span>
+      </div>
+    </div>
+
+    <div class="card sig rv d1 span3">
+      <div class="photo r2110">
+        <img src="mero-langostinos.png" alt="Mero en Salsa de Langostinos" onerror="this.parentElement.innerHTML='<div class=nophoto><i>🐡</i><p>Próximamente</p></div>'">
+      </div>
+      <div class="info">
+        <div class="name">Mero en Salsa de Langostinos <span class="star">★</span><span class="sub">Con papas</span></div>
+        <p class="desc">Filete de mero de carne firme y sabrosa, bañado en una salsa cremosa de langostinos frescos del Atlántico Sur con pimentón ahumado y un toque de azafrán. Un puente entre lo más noble del mar y la tradición española. Acompañado de papas.</p>
+        <span class="tag">Pescado · Especialidad · Mariscos</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CTA RESERVAS -->
+<section class="cta">
+  <p class="eyebrow rv" style="margin-bottom:1rem">Reservas y consultas</p>
+  <h2 class="cta-t rv">¿LISTO PARA<br><span>TU MESA?</span></h2>
+  <p class="cta-p rv">Lun–Dom · 12:00–15:00 · 20:00–23:30 · C. 83 N° 350, Necochea</p>
+  <div class="btn-row rv">
+    <a href="tel:022625128477" class="btn-rojo">Llamar ahora</a>
+    <a href="https://wa.me/5402262512847?text=Hola%2C%20quiero%20hacer%20una%20reserva" target="_blank" class="btn-wsp">WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand">TABERNA ESPAÑOLA</div>
+  <p class="ft-info">C. 83 N° 350 · Necochea, Buenos Aires · 02262 51-2847</p>
+  <a href="index.html" class="ft-back">← Volver al inicio</a>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold:.1, rootMargin:'0px 0px -30px 0px' });
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
