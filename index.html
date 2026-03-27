@@ -107,13 +107,16 @@
       font-family:'Oswald';font-size:.7rem;letter-spacing:.32em;
       text-transform:uppercase;color:var(--oro);
       margin-bottom:2rem;
+      text-shadow:0 1px 16px rgba(0,0,0,.95);
     }
     .hero-sub {
       font-family:'Lora';font-style:italic;
       font-size:clamp(.8rem,1.3vw,1rem);
-      color:rgba(245,237,216,.42);
+      color:rgba(245,237,216,.82);
       margin-top:1.8rem;
+      text-shadow:0 1px 16px rgba(0,0,0,.95);
     }
+    .jmb { text-shadow:0 2px 40px rgba(0,0,0,.85); }
     .scroll-hint {
       position:absolute; bottom:2.4rem; left:50%;
       transform:translateX(-50%);
@@ -130,14 +133,25 @@
       justify-content:flex-end;
       padding:0 2.5rem 6rem;
     }
+    .sec-overlay::before {
+      content:'';
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.45) 38%, transparent 70%);
+      pointer-events:none;
+    }
+    .sec-overlay > * { position:relative; z-index:1; }
     .sec-overlay.right { align-items:flex-end;text-align:right; }
     .sec-overlay.center { align-items:center;justify-content:center;text-align:center; }
+    .sec-overlay.center::before {
+      background:radial-gradient(ellipse at center, rgba(0,0,0,.72) 0%, rgba(0,0,0,.4) 55%, transparent 80%);
+    }
 
     .sec-lbl {
       font-family:'Oswald';font-size:.64rem;letter-spacing:.3em;
       text-transform:uppercase;color:var(--oro);
       margin-bottom:1.6rem;
       display:flex;align-items:center;gap:.7rem;
+      text-shadow:0 1px 12px rgba(0,0,0,.9);
     }
     .sec-lbl::before { content:'';width:20px;height:1px;background:var(--oro); }
     .sec-overlay.right .sec-lbl::before { display:none; }
@@ -148,6 +162,7 @@
       font-size:clamp(4rem,9.5vw,11rem);
       line-height:.86;color:var(--crema);
       text-transform:uppercase;
+      text-shadow:0 2px 32px rgba(0,0,0,.95), 0 1px 8px rgba(0,0,0,.8);
     }
     .sec-h .rj { color:var(--rojo);display:block; }
     .sec-h .ol { -webkit-text-stroke:1.5px var(--crema);color:transparent;display:block; }
@@ -155,8 +170,9 @@
     .sec-p {
       font-family:'Lora';font-style:italic;
       font-size:.93rem;line-height:1.82;
-      color:rgba(245,237,216,.42);
+      color:rgba(245,237,216,.75);
       max-width:360px;margin-top:1.6rem;
+      text-shadow:0 1px 18px rgba(0,0,0,.95);
     }
 
     /* Ghost background text */
@@ -204,10 +220,11 @@
     /* ── FOOTER ── */
     footer { background:#1C1715;padding:2rem 2.5rem;border-top:1px solid rgba(255,255,255,.04);pointer-events:all; }
     .ft-brand { font-family:'Bebas Neue';font-size:clamp(4.5rem,13vw,14rem);color:rgba(245,237,216,.05);line-height:.9;text-align:center;user-select:none; }
-    .ft-btm { display:flex;justify-content:space-between;align-items:center;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.04);margin-top:.5rem; }
+    .ft-btm { display:flex;flex-direction:column;align-items:center;gap:1rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.04);margin-top:.5rem; }
     .ft-cp { font-family:'Oswald';font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,237,216,.17); }
-    .ft-sl { display:flex;gap:2rem; }
-    .ft-sl a { font-family:'Oswald';font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,237,216,.2);text-decoration:none; }
+    .ft-sl { display:flex;gap:2.5rem;justify-content:center; }
+    .ft-sl a { font-family:'Oswald';font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,237,216,.35);text-decoration:none;transition:color .2s; }
+    .ft-sl a:hover { color:var(--crema); }
 
     /* ── VIDEO HERO ── */
     #video-sec .sticky { background:#000; overflow:hidden; }
@@ -442,7 +459,7 @@
               <div class="rv d1"><p class="inf-l">Dirección</p><p class="inf-v">C. 83 N° 350<br>Necochea, BA</p></div>
               <div class="rv d2"><p class="inf-l">Teléfono</p><p class="inf-v">02262 51-2847</p></div>
               <div class="rv d2" style="margin-top:1.5rem"><p class="inf-l">Horario</p><p class="inf-v">Lun–Dom<br>12:00–15:00<br>20:00–23:30</p></div>
-              <div class="rv d3" style="margin-top:1.5rem"><p class="inf-l">Redes</p><p class="inf-v">Facebook<br>Instagram</p></div>
+              <div class="rv d3" style="margin-top:1.5rem"><p class="inf-l">Redes</p><p class="inf-v"><a href="https://www.facebook.com/taberna350/" target="_blank" style="color:inherit;text-decoration:none;">Facebook</a><br><a href="https://www.instagram.com/taberna_espanola/" target="_blank" style="color:inherit;text-decoration:none;">Instagram</a></p></div>
             </div>
             <a href="tel:022625128477" class="btn-r rv d3" style="margin-top:2.5rem">Llamar ahora</a>
           </div>
@@ -472,7 +489,10 @@
       <div class="ft-brand">TABERNA ESPAÑOLA</div>
       <div class="ft-btm">
         <p class="ft-cp">© 2026 Taberna Española · Necochea, Buenos Aires</p>
-        <div class="ft-sl"><a href="#">Facebook</a><a href="#">Instagram</a></div>
+        <div class="ft-sl">
+          <a href="https://www.facebook.com/taberna350/" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/taberna_espanola/" target="_blank">Instagram</a>
+        </div>
       </div>
     </footer>
 
