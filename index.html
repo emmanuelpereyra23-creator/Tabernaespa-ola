@@ -266,7 +266,12 @@
     #pepe-inp::placeholder{color:rgba(245,237,216,.28);}
     #pepe-send{background:var(--rojo);border:none;border-radius:8px;color:#fff;padding:.48rem .8rem;cursor:pointer;font-size:.88rem;transition:background .2s;}
     #pepe-send:hover{background:#a31732;}
-    @media(max-width:480px){#pepe-chat{width:calc(100vw - 2rem);right:1rem;bottom:5rem;}#pepe-btn{right:1rem;bottom:1rem;}}
+    @media(max-width:480px){
+      #pepe-chat{width:calc(100vw - 2rem);right:1rem;bottom:4.2rem;}
+      #pepe-btn{right:1rem;bottom:.8rem;padding:.55rem .7rem;gap:.4rem;}
+      .pepe-lbl{display:none;}
+      .pepe-icon{font-size:1.15rem;}
+    }
 
     /* ── VIDEO MOBILE — completo, sin recorte ── */
     #video-sec { overflow:hidden; }
@@ -322,7 +327,10 @@
     <!-- NAV -->
     <nav id="nav">
       <a href="#" class="nav-logo" style="font-size:clamp(.9rem,1.6vw,1.4rem);">TABERNA ESPAÑOLA<b>.</b></a>
-      <a href="tel:022625128477" class="nav-tel">02262 51-2847</a>
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="menu.html" class="nav-tel" style="color:rgba(245,237,216,.55);letter-spacing:.22em;">MENÚ</a>
+        <a href="tel:022625128477" class="nav-tel">02262 51-2847</a>
+      </div>
     </nav>
 
     <!-- ═══ CH 1: HERO (250vh) ═══ -->
