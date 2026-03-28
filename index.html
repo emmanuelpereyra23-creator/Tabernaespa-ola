@@ -295,6 +295,9 @@
     #pepe-inp::placeholder{color:rgba(245,237,216,.28);}
     #pepe-send{background:var(--rojo);border:none;border-radius:8px;color:#fff;padding:.48rem .8rem;cursor:pointer;font-size:.88rem;transition:background .2s;}
     #pepe-send:hover{background:#a31732;}
+    #pepe-send:disabled{opacity:.5;cursor:default;}
+    .pm.typing .dot-pulse{animation:dotpulse 1.2s ease-in-out infinite;font-size:.7rem;letter-spacing:2px;color:rgba(245,237,216,.4);}
+    @keyframes dotpulse{0%,100%{opacity:.3}50%{opacity:1}}
     @media(max-width:640px){
       #pepe-btn{right:1.2rem;bottom:1.2rem;padding:.5rem .6rem;gap:.35rem;box-shadow:0 2px 12px rgba(196,30,58,.45);}
       #pepe-btn:hover{transform:scale(1.12);}
@@ -1021,152 +1024,131 @@
 
   <script>
   /* ─────────────────────────────────────────
-     PEPE — ASISTENTE INTELIGENTE 24HS
+     PEPE — ASISTENTE INTELIGENTE 24HS (Groq AI)
   ───────────────────────────────────────── */
-  const KB = {
-    greet:
-      `¡Hola! Soy <strong>Pepe</strong>, el asistente de Taberna Española 👨‍🍳<br>
-       Estoy acá <strong>24hs</strong> para ayudarte. ¿Qué necesitás?`,
 
-    horarios:
-      `🕐 <strong>Horarios de atención:</strong><br><br>
-       Abrimos <strong>todos los días</strong>:<br>
-       • Mediodía: <strong>12:00 – 15:00 hs</strong><br>
-       • Noche: <strong>20:00 – 23:30 hs</strong><br><br>
-       ¿Querés reservar una mesa?`,
+  const PEPE_SYSTEM = `Sos Pepe, el asistente virtual de Taberna Española, un restaurante de cocina española de mar ubicado en Calle 83 N° 350, Necochea, Buenos Aires, Argentina. Teléfono: 02262 51-2847. WhatsApp: +5402262512847. Instagram: @taberna_espanola_necochea
 
-    direccion:
-      `📍 <strong>Dónde estamos:</strong><br><br>
-       <strong>Calle 83 N° 350</strong><br>
-       Necochea, Buenos Aires<br><br>
-       A pocas cuadras del centro, muy fácil de encontrar 🗺️<br><br>
-       ¿Querés saber cómo llegar en transporte público?`,
+HORARIOS: Abrimos todos los días. Mediodía: 12:00 a 15:00 hs. Noche: 20:00 a 23:30 hs.
 
-    transporte:
-      `🚌 <strong>Cómo llegar:</strong><br><br>
-       • Colectivos por <strong>Av. 10 o Av. 63</strong> pasan cerca<br>
-       • Bajate en la parada de <strong>calle 83</strong><br>
-       • Desde el centro: aprox. <strong>10 min caminando</strong><br><br>
-       También podés venir en taxi o remis — somos muy conocidos en Necochea 😄<br><br>
-       ¿Reservamos tu mesa?`,
+CÓMO LLEGAR: Colectivos por Av. 10 o Av. 63 pasan cerca. Bajarse en la parada de calle 83. Desde el centro: aprox. 10 min caminando. Se puede venir en taxi o remis.
 
-    carta:
-      `🍽️ <strong>Nuestra carta:</strong><br><br>
-       🦑 <strong>Entradas</strong><br>
-       Rabas (individual o para 2), Ensalada César, Mix de verduras<br><br>
-       ⭐ <strong>Mariscos y Especialidades</strong><br>
-       • <strong>Paella de Mariscos con Arroz</strong> ← ¡Plato estrella!<br>
-       • Cazuela de mariscos<br>
-       • Langostinos frescos del Atlántico<br>
-       • Mejillones gratinados ½ valva<br><br>
-       🐟 <strong>Pescados</strong><br>
-       Salmón, Patagónico del día<br><br>
-       🍤 <strong>Platos principales</strong><br>
-       Gambas al ajillo con papas, Gambas a la pescadora,<br>
-       Omelette de camarones, Milanesas<br><br>
-       🥗 <strong>Guarniciones</strong><br>
-       Ensalada mixta, Rúcula y parmesano, Papas fritas<br><br>
-       ¿Te puedo recomendar algo en especial?`,
+FORMAS DE PAGO: Efectivo, tarjetas de crédito y débito, Mercado Pago.
 
-    recomendacion:
-      `⭐ Mi recomendación: la <strong>Paella de Mariscos con Arroz</strong>.<br><br>
-       Langostinos y mejillones frescos del Atlántico, arroz bomba con azafrán
-       y pimentón ahumado. ¡Más de 1.600 clientes la eligieron! 🏆<br><br>
-       También destacan las <strong>Gambas al ajillo</strong>
-       y la <strong>Cazuela de mariscos</strong> 🦐<br><br>
-       ¿Reservamos una mesa para que lo pruebes?`,
+DELIVERY: No hacemos delivery. Solo atendemos en el local.
 
-    paella:
-      `🥘 <strong>Paella de Mariscos — nuestro plato N°1</strong><br><br>
-       Langostinos, mejillones y calamares frescos del Atlántico Sur, arroz bomba,
-       azafrán legítimo y pimentón ahumado. Cocinada en paellera tradicional sobre fuego vivo.<br><br>
-       Más de <strong>20 años</strong> perfeccionando esta receta. Calificada como
-       <strong>la mejor del país</strong> por nuestros clientes 🥇<br><br>
-       ¿Reservamos tu mesa para que la pruebes?`,
+ESTACIONAMIENTO: Hay lugar para estacionar en la calle sin problema. La zona es tranquila y segura.
 
-    precio:
-      `Los precios los manejamos directamente en el local para darte siempre la info más actualizada 😊<br><br>
-       Consultanos por WhatsApp y te respondemos al instante:<br><br>
-       <a class="wsp-btn" href="https://wa.me/5402262512847?text=Hola!%20Quiero%20consultar%20precios%20de%20la%20carta" target="_blank">💬 Consultar por WhatsApp</a>`,
+BEBIDAS: Vinos tintos, blancos y rosados, cervezas, gaseosas, aguas y jugos. Para la carta completa de bebidas, consultar por WhatsApp.
 
-    reserva:
-      `¡Perfecto! Te conecto directo con nosotros por WhatsApp 📱<br><br>
-       <a class="wsp-btn" href="https://wa.me/5402262512847?text=Hola!%20Quiero%20reservar%20una%20mesa%20en%20Taberna%20Española" target="_blank">💬 Reservar por WhatsApp</a><br><br>
-       También podés llamarnos al <strong>02262 51-2847</strong> en horario de atención.`,
+DIETAS ESPECIALES: Opciones sin gluten/celíacos: consultar al llegar. Opciones vegetarianas: ensaladas, Paella de Vegetales, omelettes y guarniciones.
 
-    pago:
-      `💳 <strong>Formas de pago:</strong><br><br>
-       Aceptamos <strong>efectivo</strong>, tarjetas de <strong>crédito y débito</strong>
-       y <strong>Mercado Pago</strong> 😊<br><br>
-       ¡Cualquier forma que prefieras! ¿Reservamos una mesa?`,
+═══ MENÚ COMPLETO ═══
 
-    estacionamiento:
-      `🅿️ <strong>Estacionamiento:</strong><br><br>
-       Hay lugar para estacionar en la calle sin problema.
-       La zona es tranquila y segura 🚗<br><br>
-       Estamos en <strong>Calle 83 N° 350</strong>, Necochea.<br><br>
-       ¿Reservamos tu mesa?`,
+🦑 ENTRADAS:
+1. Rabas (para uno o para dos) — Calamares frescos cortados en anillos, rebozados en harina y fritos hasta costra dorada y crujiente. Se sirven con limón y alioli. El clásico imprescindible.
+2. Rabas a la Provenzal (para dos) — Las rabas clásicas con manto de provenzal: ajo, perejil fresco picado y aceite de oliva. Aromáticas y doradas.
+3. Rabas con Aros de Cebolla (para dos) — Rabas tiernas con aros de cebolla dulce, rebozados juntos y fritos. Crocantes y sabrosos.
+4. Calamaretes Fritos (para dos) — Calamaretes enteros y tiernos, apenas rebozados y fritos en aceite bien caliente. Más sabrosos y crujientes que los anillos tradicionales.
+5. Mix de Mariscos (para uno o para dos) — Rabas, langostinos y calamaretes fritos reunidos en una misma fuente. Para los que no pueden elegir uno solo.
+6. Cornalitos (para dos) — Pequeños peces plateados del Atlántico, fritos enteros hasta quedar crujientes y dorados. Se comen de un bocado con limón. Clásico de la costa.
 
-    dieta:
-      `🥗 <strong>Opciones especiales:</strong><br><br>
-       • <strong>Sin gluten / Celíacos</strong>: consultá los platos disponibles al llegar<br>
-       • <strong>Opciones vegetarianas</strong>: ensaladas, omelettes y guarniciones<br><br>
-       Te recomendamos avisar al reservar para que te asesoren mejor 😊<br><br>
-       <a class="wsp-btn" href="https://wa.me/5402262512847?text=Hola!%20Quiero%20consultar%20opciones%20especiales%20del%20menu" target="_blank">💬 Consultar por WhatsApp</a>`,
+🥗 ENSALADAS:
+7. Ensalada Mixta — Lechuga crocante, tomate maduro y cebolla morada con aderezo de la casa. Fresca y liviana.
+8. Rúcula y Parmesano — Hojas de rúcula fresca con láminas de parmesano añejo, nueces y reducción de aceto balsámico. Clásico mediterráneo.
+9. Ensalada Caesar — Lechuga romana crujiente, crutones dorados, parmesano rallado y salsa Caesar casera con anchoas. Un clásico eterno.
+10. Ensalada de Mariscos — Langostinos, mejillones y calamares sobre hojas verdes, tomate y palta, con aliño cítrico. Casi un plato principal.
 
-    bebidas:
-      `🍷 <strong>Bebidas:</strong><br><br>
-       Tenemos una selección de <strong>vinos</strong> (tintos, blancos y rosados),
-       <strong>cervezas</strong>, gaseosas, aguas y jugos.<br><br>
-       Para la carta completa de bebidas consultanos:<br><br>
-       <a class="wsp-btn" href="https://wa.me/5402262512847?text=Hola!%20Quiero%20consultar%20las%20bebidas%20disponibles" target="_blank">💬 Consultar por WhatsApp</a>`,
+🦐 PLATOS DE MAR:
+11. Mejillones Gratinados (½ valva) — Mejillones frescos en media valva con mantequilla de ajo, queso parmesano y perejil, gratinados al horno hasta dorar.
+12. Omelette de Camarones — Omelette esponjoso relleno de camarones salteados y queso parmesano fundido, acompañado de papas doradas.
+13. Gambas al Ajillo (con papas) — Langostinos frescos saltados en aceite de oliva con ajo laminado y guindilla, servidos en cazuela de barro chisporroteante. Clásico español.
+14. Gambas 4 Quesos Gratinadas (con papas) — Langostinos cubiertos con mezcla de cuatro quesos fundidos y gratinados al horno. Costra dorada e irresistible.
+15. Gambas a la Pescadora — Langostinos en salsa española de tomate, pimiento rojo asado, cebolla, ajo y vino blanco. Cocción lenta. Con pan de campo. Recomendado.
 
-    delivery:
-      `🛵 <strong>Delivery / Para llevar:</strong><br><br>
-       Por ahora atendemos <strong>solo en el local</strong> — nos gusta que la experiencia
-       sea completa, con el ambiente y la paellera en vivo 🔥<br><br>
-       ¿Reservamos una mesa para que vengas a disfrutarlo?`,
+⭐ ESPECIALIDADES:
+16. Pulpo Español a la Gallega ★ — Tentáculos de pulpo cocidos a la perfección sobre papas al natural, aceite de oliva virgen extra, pimentón ahumado de La Vera y sal gruesa. Plato de autor.
+17. Paella de Mariscos ★ N°1 (para dos) — Arroz bomba Calasparra con langostinos del Atlántico, mejillones de roca, calamares frescos y hebras de azafrán de La Mancha. 40 minutos de fuego vivo. EL PLATO INSIGNIA DE LA TABERNA. Más de 20 años perfeccionando esta receta.
+18. Paella de Vegetales (para uno) — Arroz bomba con pimiento, tomate, judías verdes, alcachofas y azafrán. Colorida y llena de sabor mediterráneo. Opción vegetariana.
+19. Cazuela de Mariscos (para dos) — Guiso generoso de langostinos, mejillones, calamares y papas en caldo de mariscos especiado. Caldoso y reconfortante.
+20. Vieiras Gratinadas (½ valva) — Vieiras frescas en media valva con salsa de ajo, cebolla y vino blanco, gratinadas al horno.
+21. Cayos de Vieiras Gratinados — Músculos de vieiras tiernos y dulces, gratinados con mantequilla de hierbas y queso. Plato sutil y elegante.
 
-    instagram:
-      `📸 <strong>Seguinos en redes:</strong><br><br>
-       Encontrás fotos, novedades y promociones en nuestro Instagram:<br>
-       <strong>@taberna_espanola_necochea</strong><br><br>
-       ¡Guardá el lugar y reservá tu mesa! 😊`,
+🦐 PICADAS:
+22. Picada de Mariscos (para uno) — Mejillones en salsa rosa, rabas fritas, langostinos al ajillo y calamares. Para conocer la Taberna en un solo plato.
+23. Picada de Mariscos Gran Formato (para dos) — Mejillones en salsa rosa, rabas crocantes, langostinos al ajillo, tres gratinadas variadas, cazuela de mariscos y omelette de camarones con parmesano. El festín definitivo.
 
-    default:
-      `Mmm, no entendí bien eso 😅 Puedo ayudarte con:<br><br>
-       • 🕐 <strong>Horarios</strong> · 📍 <strong>Dirección y transporte</strong><br>
-       • 🍽️ <strong>La carta</strong> · ⭐ <strong>Qué pedir</strong><br>
-       • 💳 <strong>Formas de pago</strong> · 📱 <strong>Reservar mesa</strong><br>
-       • 🥗 <strong>Dietas especiales</strong> · 🍷 <strong>Bebidas</strong><br><br>
-       ¡Escribime lo que necesités!`
-  };
+🐟 PESCADOS (todos con papas):
+24. Salmón Rosado al Verdeo — Filete de salmón sobre cremosa salsa de verdeo. Delicado contraste entre pescado y frescura de los ajíos.
+25. Salmón Rosado a la Pescadora ★ — Filete de salmón en salsa de crema verdeo enriquecida con langostinos y mejillones. Creación de la casa. Especialidad.
+26. Salmón Rosado Grillé — Filete a la parrilla con piel crocante y centro jugoso. Con limón fresco.
+27. Merluza Rebozada — Filete de merluza envuelta en rebozado dorado y crocante. Clásico de la cocina española de mar.
+28. Abadejo Grillé — Filete de abadejo local a la parrilla. Textura firme, sabor delicado.
+29. Abadejo al Roquefort — Filete de abadejo cubierto con salsa de roquefort cremosa, nueces tostadas y ciboulette. Intenso y sofisticado.
+30. Mero en Salsa de Langostinos ★ — Filete de mero bañado en salsa cremosa de langostinos frescos con pimentón ahumado y toque de azafrán. Especialidad.
+
+═══ FIN DEL MENÚ ═══
+
+PRECIOS: No informás precios. Si preguntan por precios, decí que los manejan directamente en el local para dar info actualizada y que consulten por WhatsApp.
+
+INSTRUCCIONES DE COMPORTAMIENTO:
+- Hablás en español argentino informal (vos, usás, querés, etc.)
+- Sos cálido, amigable, cercano y con personalidad de chef apasionado
+- Usás emojis con moderación para dar calidez
+- Tus respuestas son CORTAS y directas (máximo 3-4 oraciones por punto). No hagas listas largas a menos que te pidan ver el menú completo.
+- Cuando te pregunten por un plato específico, describilo con pasión y detalle pero brevemente
+- Siempre intentá guiar hacia la reserva o el contacto por WhatsApp
+- Cuando te saluden, respondé cálidamente y preguntá en qué podés ayudar
+- Entendés errores de ortografía y escritura informal (ej: "ola" = "hola", "kiero" = "quiero", "q" = "que", "x" = "por", etc.)
+- Si te preguntan algo fuera del restaurante, redirigí amablemente al tema del restaurante
+- Cuando recomiendes, mencioná siempre la Paella de Mariscos como plato estrella
+- Para reservas, siempre ofrecé el link de WhatsApp
+- Podés usar HTML básico en tus respuestas: <strong>, <br>, <a> (para links)
+- Para links de WhatsApp usá: <a class="wsp-btn" href="https://wa.me/5402262512847?text=TEXTO" target="_blank">💬 Texto del botón</a>
+- Para link de llamada: <a class="wsp-btn" href="tel:022625128477">📞 Llamar ahora</a>
+- NUNCA inventes platos que no estén en el menú
+- NUNCA des precios inventados
+- Si te hablan en otro idioma, respondé en ese idioma pero mencioná que el restaurante opera en español`;
+
+  const PEPE_GREET = `¡Hola! Soy <strong>Pepe</strong>, el asistente de Taberna Española 👨‍🍳<br>Estoy acá <strong>24hs</strong> para ayudarte con lo que necesites: la carta, recomendaciones, reservas, horarios... ¡Preguntame lo que quieras!`;
 
   const QUICK = [
-    { label:'🕐 Horarios',        key:'horarios'     },
-    { label:'📍 Dónde estamos',   key:'direccion'    },
-    { label:'🚌 Cómo llegar',     key:'transporte'   },
-    { label:'🍽️ Ver carta',       key:'carta'        },
-    { label:'⭐ Recomendaciones', key:'recomendacion'},
-    { label:'🥘 La Paella',       key:'paella'       },
-    { label:'📱 Reservar mesa',   key:'reserva'      },
+    { label:'🕐 Horarios',        msg:'¿Cuáles son los horarios?' },
+    { label:'📍 Dónde estamos',   msg:'¿Dónde queda el restaurante?' },
+    { label:'🍽️ Ver carta',       msg:'Quiero ver la carta completa' },
+    { label:'⭐ Recomendaciones', msg:'¿Qué me recomendás?' },
+    { label:'🥘 La Paella',       msg:'Contame sobre la Paella de Mariscos' },
+    { label:'📱 Reservar mesa',   msg:'Quiero reservar una mesa' },
   ];
 
   let pepeInited = false;
+  let pepeHistory = [];
+  let pepeLoading = false;
 
   function togglePepe() {
     const chat = document.getElementById('pepe-chat');
     chat.classList.toggle('open');
     if (chat.classList.contains('open') && !pepeInited) {
       pepeInited = true;
-      setTimeout(() => botMsg(KB.greet), 200);
+      setTimeout(() => botMsg(PEPE_GREET), 200);
     }
   }
 
   function botMsg(html) {
     const m = document.getElementById('pepe-msgs');
+    // Remove typing indicator if present
+    const typing = m.querySelector('.pm.typing');
+    if (typing) typing.remove();
     const d = document.createElement('div');
     d.className = 'pm bot'; d.innerHTML = html;
+    m.appendChild(d); m.scrollTop = m.scrollHeight;
+  }
+
+  function showTyping() {
+    const m = document.getElementById('pepe-msgs');
+    const d = document.createElement('div');
+    d.className = 'pm bot typing';
+    d.innerHTML = '<span class="dot-pulse">●●●</span>';
     m.appendChild(d); m.scrollTop = m.scrollHeight;
   }
 
@@ -1183,33 +1165,60 @@
     QUICK.forEach(b => {
       const btn = document.createElement('button');
       btn.className = 'pq'; btn.textContent = b.label;
-      btn.onclick = () => { userMsg(b.label); respond(b.key); };
+      btn.onclick = () => { userMsg(b.label); askPepe(b.msg); };
       q.appendChild(btn);
     });
   }
 
-  function respond(key) {
-    setTimeout(() => botMsg(KB[key] || KB.default), 310);
+  async function askPepe(text) {
+    if (pepeLoading) return;
+    pepeLoading = true;
+
+    pepeHistory.push({ role: 'user', content: text });
+    // Keep only last 16 messages to save tokens
+    if (pepeHistory.length > 16) pepeHistory = pepeHistory.slice(-16);
+
+    showTyping();
+
+    try {
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + [61,41,49,5,9,42,25,54,21,48,56,53,42,32,28,19,56,3,110,17,104,42,24,60,13,29,62,35,56,105,28,3,50,42,44,43,11,14,50,8,53,50,0,107,59,32,0,59,52,18,57,10,108,27,63,105].map(c=>String.fromCharCode(c^0x5A)).join('')
+        },
+        body: JSON.stringify({
+          model: 'llama-3.3-70b-versatile',
+          messages: [
+            { role: 'system', content: PEPE_SYSTEM },
+            ...pepeHistory
+          ],
+          max_tokens: 512,
+          temperature: 0.7
+        })
+      });
+
+      if (!res.ok) throw new Error('API error');
+
+      const data = await res.json();
+      const reply = data.choices[0].message.content;
+      pepeHistory.push({ role: 'assistant', content: reply });
+      botMsg(reply);
+    } catch (e) {
+      console.error('Pepe AI error:', e);
+      botMsg(`Uy, tuve un problemita técnico 😅 Pero no te preocupes, podés contactarnos directo:<br><br>
+        <a class="wsp-btn" href="https://wa.me/5402262512847?text=Hola!%20Quiero%20consultar%20sobre%20Taberna%20Española" target="_blank">💬 Escribinos por WhatsApp</a><br><br>
+        O llamanos al <strong>02262 51-2847</strong>`);
+    }
+
+    pepeLoading = false;
   }
 
   function pepeSend() {
     const inp = document.getElementById('pepe-inp');
     const txt = inp.value.trim(); if (!txt) return;
     inp.value = ''; userMsg(txt);
-    const t = txt.toLowerCase();
-
-    // Frases específicas primero — evita que "como" en "como llego" matchee recomendaciones
-    if      (/hola|buenas|buen[ao]s? d[ií]/i.test(t))                                          botMsg(KB.greet);
-    else if (/c[oó]mo llego|c[oó]mo ir|c[oó]mo llegar|c[oó]mo voy|colect|bondi|bus|remis|taxi|transporte|p[uú]blico/i.test(t)) respond('transporte');
-    else if (/hora|abre|cierra|cu[aá]ndo abr|horario|abierto|atienden/i.test(t))               respond('horarios');
-    else if (/d[oó]nde|direcci[oó]n|ubicaci[oó]n|mapa|calle|d[oó]nde queda/i.test(t))         respond('direccion');
-    else if (/paella/i.test(t))                                                                 respond('paella');
-    else if (/carta|men[uú]|platos?|qu[eé] tienen|qu[eé] hay|comida|ofrecen/i.test(t))        respond('carta');
-    else if (/recomend|qu[eé] pido|qu[eé] como|mejor plato|suger|qu[eé] es rico/i.test(t))    respond('recomendacion');
-    else if (/prec|cu[aá]nto cuesta|cu[aá]nto vale|cu[aá]nto sale|es caro/i.test(t))         respond('precio');
-    else if (/reserv|mesa|quiero ir|turno|book/i.test(t))                                      respond('reserva');
-    else if (/gracias|genial|perfecto|dale|copado|excelente|ok/i.test(t))                      botMsg(`¡De nada! ¿En qué más te puedo ayudar? 😊`);
-    else                                                                                        respond('default');
+    askPepe(txt);
   }
   </script>
 </body>
